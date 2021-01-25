@@ -1,0 +1,45 @@
+// @import 'bootstrap/dist/css/bootstrap.min.css';
+// @import './styles/custom.scss';
+
+body {
+  margin: 0;
+  // font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  //   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  //   sans-serif;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  // -webkit-tap-highlight-color: rgba(0,0,0,0);
+  font: normal 14px/22px "Open Sans", sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.layout-holder, .header-holder, .menu-holder, .footer-holder, .promo-inner, .section-holder {
+  margin: auto;
+  max-width: 1400px;
+  min-width: 980px;
+  // min-width: 1000px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+a {
+  text-decoration: none;
+
+  // &:-webkit-any-link {
+  //   color: -webkit-link;
+  //   cursor: pointer;
+  //   text-decoration: underline;
+  // }
+}
+
+a, a:focus, a:active, button, button:focus, button:active {
+  outline: none;
+}
