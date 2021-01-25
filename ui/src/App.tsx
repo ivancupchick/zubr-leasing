@@ -12,9 +12,9 @@ import { ContactsPage } from './pages/contactsPage/ContactsPage';
 const App: React.FC = () => {
   return (
     <div className={"layout layout_type_index"}>
+      <BrowserRouter>
       <HeaderComponent></HeaderComponent>
 
-      <BrowserRouter>
         <Switch>
           <Route path='/' exact component={Main} />
           <Route path='/legal' exact component={LegalPerson} />

@@ -1,7 +1,7 @@
 import React from "react"
 
 const Individual: React.FC = () => {
-  return <div >
+  return <div>
     Individual
   </div>
 }

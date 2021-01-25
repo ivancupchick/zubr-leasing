@@ -1,7 +1,8 @@
 import React from 'react';
 import './Header.scss';
 
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const HeaderComponent = () => {
   return <header className="header">
@@ -68,15 +69,19 @@ const HeaderComponent = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
-          <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+          <Nav.Link as={Link} to="/">Главная</Nav.Link>
+          <Nav.Link as={Link} to="/individual">Физ. лицам</Nav.Link>
+          <Nav.Link as={Link} to="/legal">Юр. лицам</Nav.Link>
+          <Nav.Link as={Link} to="/catalog">Каталог</Nav.Link>
+          <Nav.Link as={Link} to="/about">О компании</Nav.Link>
+          <Nav.Link as={Link} to="/contacts">Контакты</Nav.Link>
+          {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-          </NavDropdown>
+          </NavDropdown> */}
         </Nav>
         {/* <Nav>
           <Nav.Link href="#deets">More deets</Nav.Link>

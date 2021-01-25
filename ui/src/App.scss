@@ -39,3 +39,10 @@
     transform: rotate(360deg);
   }
 }
+
+.layout {
+  &>div:nth-child(2) {
+    position: relative;
+    top: 166px;
+  }
+}
