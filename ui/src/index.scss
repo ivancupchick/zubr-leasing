@@ -43,3 +43,12 @@ a {
 a, a:focus, a:active, button, button:focus, button:active {
   outline: none;
 }
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+
+audio, canvas, img, video {
+  vertical-align: middle;
+}

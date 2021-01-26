@@ -1,0 +1,245 @@
+.firstSilde {
+  .carousel {
+  height: calc(100vh - 166px);
+  &-inner {
+    height: 100%;
+  }
+
+  &-item {
+    height: 100%;
+    // position: relative;
+    & > div.img {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      -webkit-transform-origin: 100% 0;
+      -moz-transform-origin: 100% 0;
+      -ms-transform-origin: 100% 0;
+      -o-transform-origin: 100% 0;
+      transform-origin: 100% 0;
+      -webkit-animation: immortalkenburns 20s linear 0s infinite alternate;
+      -moz-animation: immortalkenburns 20s linear 0s infinite alternate;
+      -o-animation: immortalkenburns 20s linear 0s infinite alternate;
+      animation: immortalkenburns 20s linear 0s infinite alternate;
+
+      // position: relative;
+      // display: block;
+      // -moz-box-sizing: border-box;
+      // box-sizing: border-box;
+      // -webkit-user-select: none;
+      // -moz-user-select: none;
+      // -ms-user-select: none;
+      // user-select: none;
+      // -webkit-touch-callout: none;
+      // -khtml-user-select: none;
+      // -ms-touch-action: pan-y;
+      // touch-action: pan-y;
+      // -webkit-tap-highlight-color: transparent;
+
+      &.firstSlide {
+        background-image: url('./carouselImage/1.png');
+      }
+      &.secondSlide {
+        background-image: url('./carouselImage/2.jpg');
+      }
+      &.thirdSlide {
+        background-image: url('./carouselImage/3.jpg');
+      }
+      &.fourthSlide {
+        background-image: url('./carouselImage/4.png');
+      }
+      &.fifthSlide {
+        background-image: url('./carouselImage/5.png');
+      }
+    }
+  }
+
+  &-caption {
+    bottom: 340px;
+    background-color: rgba(0, 0, 0, 0.693);
+  }
+}
+}
+
+
+@keyframes immortalkenburns {
+  0%   {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: -webkit-transform 20s linear 0s;
+    -o-transition: -o-transform 20s linear 0s;
+    -moz-transition: transform 20s linear 0s,-moz-transform 20s linear 0s;
+    transition: transform 20s linear 0s;
+    transition: transform 20s linear 0s,-webkit-transform 20s linear 0s,-moz-transform 20s linear 0s,-o-transform 20s linear 0s;
+  }
+  100% {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-transition: -webkit-transform 20s linear 0s;
+    -o-transition: -o-transform 20s linear 0s;
+    -moz-transition: transform 20s linear 0s,-moz-transform 20s linear 0s;
+    transition: transform 20s linear 0s;
+    transition: transform 20s linear 0s,-webkit-transform 20s linear 0s,-moz-transform 20s linear 0s,-o-transform 20s linear 0s;
+  }
+}
+
+.secondScreen {
+  display: flex;
+
+  .auto {
+    width: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 36px;
+      letter-spacing: 4.8px;
+      text-align: center;
+      text-transform: uppercase;
+
+      color: #fff;
+    }
+  }
+
+  .left-auto {
+    background-image: url('./secondScreenImage/1.jpg');
+  }
+  .right-auto {
+    background-image: url('./secondScreenImage/2.jpg');
+  }
+}
+
+.thirdScreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 166px;
+
+  .carousel {
+    width: 100%;
+
+    &-item {
+      display: flex;
+      justify-content: center;
+
+      .cars {
+        opacity: 1;
+        // width: 31644px;
+        // transform: translate3d(-8204px, 0px, 0px);
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 40px;
+        // position: relative;
+        // display: block;
+        // -moz-box-sizing: border-box;
+        // box-sizing: border-box;
+        // -webkit-user-select: none;
+        // -moz-user-select: none;
+        // -ms-user-select: none;
+        // user-select: none;
+        // -webkit-touch-callout: none;
+        // -khtml-user-select: none;
+        // -ms-touch-action: pan-y;
+        // touch-action: pan-y;
+        // -webkit-tap-highlight-color: transparent;
+        // display: flex;
+        // align-items: flex-start;
+
+        &-item {
+          width: 273px;
+          margin: 0 10px;
+          display: flex;
+          flex-direction: column;
+
+          &-img {
+            position: relative;
+            display: block;
+            overflow: hidden;
+
+            img {
+              display: block;
+              height: auto;
+              width: 100%;
+              -webkit-transition: -webkit-transform 0.35s;
+              transition: transform 0.35s;
+              -webkit-backface-visibility: hidden;
+              backface-visibility: hidden;
+            }
+          }
+
+          &-description {
+            box-sizing: border-box;
+            padding: 15px 15px 12px;
+            background-color: #f3f7fc;
+            text-align: center;
+
+            a {
+              display: inline-block;
+              vertical-align: top;
+              color: #343e4d;
+              font-size: 18px;
+              font-weight: bold;
+              line-height: 24px;
+              letter-spacing: .9px;
+              transition: all .3s;
+              max-height: 96px;
+              overflow: hidden;
+            }
+
+            &-price {
+              display: block;
+              margin: 5px 0 0;
+              font-size: 18px;
+              font-weight: bold;
+              line-height: 30px;
+              letter-spacing: .9px;
+
+              &.usd {
+                margin: 10px 0 0;
+                color: #bb2242;
+                font-size: 24px;
+                letter-spacing: 1.2px;
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+}
+
+
+.screen {
+  height: 100vh;
+  width: 100%;
+}
+
+// animate__slideInDown
