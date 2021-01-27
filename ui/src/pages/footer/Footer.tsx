@@ -10,7 +10,7 @@ const Footer = () => {
     </div>
     <div className="documents documents-info">
       <span className="document-info-copyright">
-        © Активлизинг 2003 – 2020. Все права защищены
+        © Зубр-лизинг 2020. Все права защищены
       </span>
     </div>
   </footer>

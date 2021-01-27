@@ -56,8 +56,8 @@ const HeaderComponent = () => {
           {/*  */}
           <div className="header-holder-rs-btn">
             <a href="/" className="header-holder-rs-btn-personal">
-              <span>Кабинет клиента</span>
-              <span className="absl">вход</span>
+              <span>Отправить заявку</span>
+              <span style={{ visibility: 'hidden' }} className="absl">вход</span>
             </a>
           </div>
           {/*  */}
