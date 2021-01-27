@@ -1,0 +1,73 @@
+.carousel {
+  height: 600px;
+
+  &-inner {
+    height: 100%;
+  }
+
+  &-item {
+    height: 100%;
+    // position: relative;
+    & > div.img {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      -webkit-transform-origin: 100% 0;
+      -moz-transform-origin: 100% 0;
+      -ms-transform-origin: 100% 0;
+      -o-transform-origin: 100% 0;
+      transform-origin: 100% 0;
+      -webkit-animation: immortalkenburns 20s linear 0s infinite alternate;
+      -moz-animation: immortalkenburns 20s linear 0s infinite alternate;
+      -o-animation: immortalkenburns 20s linear 0s infinite alternate;
+      animation: immortalkenburns 20s linear 0s infinite alternate;
+
+      // position: relative;
+      // display: block;
+      // -moz-box-sizing: border-box;
+      // box-sizing: border-box;
+      // -webkit-user-select: none;
+      // -moz-user-select: none;
+      // -ms-user-select: none;
+      // user-select: none;
+      // -webkit-touch-callout: none;
+      // -khtml-user-select: none;
+      // -ms-touch-action: pan-y;
+      // touch-action: pan-y;
+      // -webkit-tap-highlight-color: transparent;
+
+      &.firstSlide {
+        background-image: url('./carouselImage/1.png');
+      }
+      &.secondSlide {
+        background-image: url('./carouselImage/2.jpg');
+      }
+      &.thirdSlide {
+        background-image: url('./carouselImage/3.jpg');
+      }
+      &.fourthSlide {
+        background-image: url('./carouselImage/4.png');
+      }
+      &.fifthSlide {
+        background-image: url('./carouselImage/5.png');
+      }
+    }
+  }
+
+  &-caption {
+    top: 50%;  /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+
+    transform: translate(-50%, -50%); /* This is a shorthand of */
+    background-color: rgba(0, 0, 0, 0.693);
+  }
+}

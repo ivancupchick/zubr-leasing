@@ -1,0 +1,55 @@
+.commonContent{
+  &-wrapper {
+    color: #343e4d;
+    min-height: 450px;
+    background-color: rgba(219, 230, 245, 0.33);
+
+    .table {
+      &-header {
+        padding-top: 30px;
+        margin: 0 0 15px 30px;
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: 800;
+        line-height: 24px;
+        letter-spacing: 0.9px;
+      }
+
+      &-subtitle {
+        padding-left: 134px;
+        padding-bottom: 20px;
+        font-size: 14px;
+        font-style: italic;
+        font-weight: normal;
+        letter-spacing: 0.7px;
+      }
+
+      &-subtitle:first-child {
+        padding-left: 30px;
+      }
+
+      &-content {
+        font-weight: 400;
+        letter-spacing: 0.7px;
+      }
+
+      &-text {
+        display: block;
+        padding-left: 150px;
+      }
+    }
+  }
+
+  &-link {
+    letter-spacing: 0.7px;
+    padding-left: 30px;
+    font-weight: normal;
+    font-size: 15px;
+    color: #155c98;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

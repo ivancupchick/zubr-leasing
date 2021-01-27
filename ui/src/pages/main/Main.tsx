@@ -1,79 +1,17 @@
 import React from "react"
 
 import Carousel from 'react-bootstrap/Carousel'
-// import firstSlide from './carouselImage/1.png'
-// import secondSlide from './carouselImage/2.jpg'
-// import thirdSlide from './carouselImage/3.jpg'
-// import fourthSlide from './carouselImage/4.png'
+import { CommonCarouselMenu } from "../../shared/components/CommonCarouselMenu.tsx/CommonCarouselMenu"
+import { ContactsBlock } from "../../shared/components/ContactsBlock/ContactsBlock"
+import { Footer } from "../footer/Footer"
 import carActua1 from './carActual1.jpeg'
 
 import './Main.scss'
 
 const Main = () => {
   return <div>
-    <div className="firstSilde">
-      <Carousel>
-        <Carousel.Item>
-          <div
-            className="img firstSlide d-block w-100"
-            // src={firstSlide}
-            // alt="Волшебные дни продаж Volvo"
-          />
-          <Carousel.Caption>
-            <h3>Волшебные дни продаж Volvo</h3>
-            <p>Рекордные выгожы до 31 января 2021</p>
-            <button>Подробнее</button>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div
-            className="img secondSlide d-block w-100"
-            // src={secondSlide}
-            // alt="Лизинг авто для физических лиц"
-          />
-          <Carousel.Caption>
-            <h3>Лизинг авто для физических лиц</h3>
-            <p>Ежемесячные платежи стали ещё ниже</p>
-            <button>Подробнее</button>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div
-            className="img thirdSlide d-block w-100"
-            // src={thirdSlide}
-            // alt="Лизинг для юридических лиц"
-          />
-          <Carousel.Caption>
-            <h3>Лизинг для юридических лиц</h3>
-            <p>Премиум сервис на доступных условиях</p>
-            <button>Подробнее</button>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div
-            className="img fourthSlide d-block w-100"
-            // src={fourthSlide}
-            // alt="Актив assistance"
-          />
-          <Carousel.Caption>
-            <h3>Актив assistance - услуга помощи при страховом случае</h3>
-            {/* <p>Премиум сервис на доступных условиях</p> */}
-            <button>Подробнее</button>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div
-            className="img fifthSlide d-block w-100"
-            // src={fifthSlide}
-            // alt="Third slide"
-          />
-          <Carousel.Caption>
-            <h3>Меняйте старый автомобиль</h3>
-            <p>Программа Trade-in для новых и б\у автомобилей</p>
-            <button>Подробнее</button>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
+    <div className="firstScreen">
+      <CommonCarouselMenu url=""></CommonCarouselMenu>
     </div>
 
     <section className="screen secondScreen">
@@ -115,6 +53,14 @@ const Main = () => {
         </Carousel.Item>
       </Carousel>
       <button>Смотреть ещё</button>
+    </section>
+
+    <section className="screen fourthScreen">
+      <ContactsBlock></ContactsBlock>
+    </section>
+
+    <section className="screen fifthScreen">
+      <Footer></Footer>
     </section>
   </div>
 }
