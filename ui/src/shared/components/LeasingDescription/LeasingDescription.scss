@@ -1,6 +1,8 @@
+@import '../../../styles/shared.scss';
+
 .commonContent{
   &-wrapper {
-    color: #343e4d;
+    color: $border-and-text-color-first;
     min-height: 450px;
     background-color: rgba(219, 230, 245, 0.33);
 
@@ -45,7 +47,7 @@
     padding-left: 30px;
     font-weight: normal;
     font-size: 15px;
-    color: #155c98;
+    color: $color-first;
     text-decoration: underline;
 
     &:hover {

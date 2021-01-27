@@ -16,7 +16,7 @@ const HeaderComponent = () => {
           >
             Лизинговые услуги в Минске, купить авто в лизинг в Беларуси (РБ)
           </a>
-          <div className={"logo-wrap-numberOnePicture"}></div>
+          {/* <div className={"logo-wrap-numberOnePicture"}></div> */}
         </div>
 
         <div className="header-holder-rs">

@@ -1,12 +1,13 @@
+@import './shared.scss';
 // $navbar-nav-link-padding-x: 50px;
 $theme-colors: (
     // "info": tomato,
     // "danger": teal
     // color:
-    "dark": #0e192a
+    "dark": $main-color
 );
 
-// $body-bg: #000;
-// $body-color: #111;
+// $body-bg:;
+// $body-color:;
 
 @import "~bootstrap/scss/bootstrap";

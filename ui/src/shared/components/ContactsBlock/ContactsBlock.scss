@@ -1,3 +1,5 @@
+@import '../../../styles/shared.scss';
+
 .wrapper-contacts {
   display: flex;
   padding-top: 166px;
@@ -40,7 +42,7 @@
         position: absolute;
         top: 100%;
         left: 50%;
-        background: #343e4d;
+        background: $border-and-text-color-first;
         content: '';
       }
     }
@@ -52,7 +54,7 @@
       width: 100%;
 
       span {
-        color: #0963aa;
+        color: $button-color;
         font-weight: bold;
         pointer-events: none;
 

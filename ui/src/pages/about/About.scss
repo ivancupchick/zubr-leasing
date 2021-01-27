@@ -1,0 +1,106 @@
+@import '../../styles/shared.scss';
+
+section.about-page {
+  display: flex;
+  flex-direction: column;
+  padding-top: 166px;
+
+  .first {
+    width: 100%;
+    background-image: url(./bg-about.png);
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+
+    &-part {
+      box-sizing: border-box;
+      max-width: 1400px;
+      min-width: 1000px;
+      padding-right: 15px;
+      padding-left: 15px;
+      border-top: 1px solid $border-and-text-color-first;
+      padding: 60px 0;
+      padding-top: 0;
+      margin: 0 auto;
+      margin-top: 30px;
+
+      h2 {
+        color: $border-and-text-color-first;
+        margin: 0 0 30px;
+        padding: 30px 0;
+        text-align: left;
+        display: block;
+        position: relative;
+        font-size: 30px;
+        font-weight: 800;
+        line-height: 36px;
+        letter-spacing: 4.8px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .second {
+    padding: 45px 0;
+    width: 100%;
+
+    &-part {
+      box-sizing: border-box;
+      margin: auto;
+      max-width: 1400px;
+      min-width: 1000px;
+      padding-right: 15px;
+      padding-left: 15px;
+
+      &-content {
+        color: $border-and-text-color-first;
+        font: normal 14px/22px "Open Sans", sans-serif;
+        letter-spacing: .7px;
+        // display: flex;
+        // flex-direction: column;
+
+
+        ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          margin: 15px 0;
+
+          li {
+            list-style-type: none;
+            position: relative;
+            margin-top: 15px;
+
+            &:first-child {
+              margin: 0;
+            }
+
+            &::before {
+              content: '';
+              position: absolute;
+              top: 10px;
+              left: -13px;
+              display: block;
+              width: 5px;
+              height: 5px;
+              background: $color-first;
+              margin-top: 0;
+            }
+          }
+        }
+
+        a {
+          color: $color-first;
+          text-decoration: underline;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .wrapper-contacts {
+    padding-top: 20px;
+    height: 700px;
+  }
+}

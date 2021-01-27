@@ -1,10 +1,12 @@
+@import '../../styles/shared.scss';
+
 .header {
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
-  background: #fff;
+  background: $white-color;
 
   &-top {
     position: relative;
@@ -40,17 +42,17 @@
           background-size: cover;
         }
 
-        &-numberOnePicture {
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          width: 161px;
-          height: 31px;
-          z-index: 20;
-          background: url(./numberOnePicture.svg) no-repeat 50% 50%;
-          background-size: cover;
-          cursor: pointer;
-        }
+        // &-numberOnePicture {
+        //   position: absolute;
+        //   bottom: 0;
+        //   right: 0;
+        //   width: 161px;
+        //   height: 31px;
+        //   z-index: 20;
+        //   background: url(./numberOnePicture.svg) no-repeat 50% 50%;
+        //   background-size: cover;
+        //   cursor: pointer;
+        // }
       }
     }
 
@@ -100,7 +102,7 @@
 
             &-number {
               display: inline-block;
-              color: #0e192a;
+              color: $main-color;
               font-size: 16px;
               line-height: 24px;
               letter-spacing: .64px;
@@ -120,7 +122,7 @@
       .mode {
         display: inline-block;
         line-height: 61px;
-        color: #0e192a;
+        color: $main-color;
         font-size: 15px;
         text-align: left;
 
@@ -145,7 +147,7 @@
         }
 
         &-inner_type_holiday {
-          border-left: 1px solid #0e192a;
+          border-left: 1px solid $main-color;
           margin-left: 11px;
           padding-left: 10px;
         }
@@ -156,12 +158,12 @@
 
         &-day {
           box-sizing: border-box;
-          border: 1px solid #0963aa;
+          border: 1px solid $button-color;
           float: left;
           height: 7px;
           margin-left: 10px;
           width: 7px;
-          background: #0963aa;
+          background: $button-color;
 
           &:first-of-type {
             margin-left: 0;
@@ -171,7 +173,7 @@
         &-time {
           display: block;
           margin-top: 3px;
-          color: #0e192a;
+          color: $main-color;
           font-size: 13px;
           font-weight: 600;
           line-height: 18px;
@@ -186,8 +188,8 @@
         &-personal {
           padding: 5px 45px;
           height: 40px;
-          background-color: #155c98;
-          color: #fff;
+          background-color: $color-first;
+          color: $white-color;
           text-transform: uppercase;
           position: relative;
           display: inline-flex;
@@ -294,7 +296,7 @@
 
 
   .navbar {
-    // background: #0e192a;
+    // background: $main-color;
 
     // &-nav {
     //   font-size: 1px;
@@ -306,7 +308,7 @@
     // }
 
     .nav-link {
-      // color: #fff !important;
+      // color: $white-color !important;
     }
   }
 }

@@ -1,7 +1,9 @@
+@import '../../styles/shared.scss';
+
 footer {
   padding-top: 30px;
-  background: #0e192a;
-  color: #fff;
+  background: $main-color;
+  color: $white-color;
   font-size: 15px;
   line-height: 24px;
   padding-top: 0;
@@ -31,7 +33,7 @@ footer {
     &-item {
       display: inline-block;
       margin-left: 110px;
-      color: #fff;
+      color: $white-color;
       letter-spacing: .75px;
       text-decoration: underline;
 

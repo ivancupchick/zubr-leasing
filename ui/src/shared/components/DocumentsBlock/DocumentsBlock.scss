@@ -1,10 +1,12 @@
+@import '../../../styles/shared.scss';
+
 .layout {
   &-section {
     padding: 54px 0 15px;
     height: 560px;
 
     &_documents {
-      color: #ffffff;
+      color: $white-color;
       background-color: #0c1f2e;
       background-repeat: no-repeat;
       background-position: 50% 50%;
@@ -14,7 +16,7 @@
       box-sizing: content-box;
 
       &_span {
-        background: #ffffff;
+        background: $white-color;
         height: 1.3px;
         width: 90px;
         position: absolute;
@@ -44,7 +46,7 @@
   &_span {
     height: 1.3px;
     width: 90px;
-    background: #343e4d;
+    background: $border-and-text-color-first;
     position: absolute;
     top: 100%;
     left: 47%;
@@ -84,13 +86,13 @@
             &-btn {
               box-sizing: border-box;
               display: block;
-              border: 2px solid #343e4d;
+              border: 2px solid $border-and-text-color-first;
               background: none;
               padding: 11px 0;
               width: 200px;
               position: relative;
               z-index: 1;
-              color: #343e4d;
+              color: $border-and-text-color-first;
               cursor: pointer;
               font: bold 15px/22px "Open Sans", sans-serif;
               letter-spacing: .75px;
@@ -100,9 +102,9 @@
 
               padding: 10px;
 
-              border-color: #025fa9;
-              background: #025fa9;
-              color: #fff;
+              border-color: $button-color-second;
+              background: $button-color-second;
+              color: $white-color;
             }
           }
         }
@@ -122,7 +124,7 @@
         &-link {
           cursor: pointer;
           display: block;
-          color: #343e4d;
+          color: $border-and-text-color-first;
           font-size: 15px;
           font-weight: bold;
           line-height: 20px;
@@ -137,7 +139,7 @@
           &-anchor {
             display: block;
             margin-top: 40px;
-            color: #fff;
+            color: $white-color;
             text-decoration: underline;
           }
         }

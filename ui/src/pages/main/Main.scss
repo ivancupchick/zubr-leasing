@@ -1,3 +1,5 @@
+@import '../../styles/shared.scss';
+
 .screen {
   height: 100vh;
   width: 100%;
@@ -60,7 +62,7 @@
       text-align: center;
       text-transform: uppercase;
 
-      color: #fff;
+      color: $white-color;
     }
   }
 
@@ -143,7 +145,7 @@
             a {
               display: inline-block;
               vertical-align: top;
-              color: #343e4d;
+              color: $border-and-text-color-first;
               font-size: 18px;
               font-weight: bold;
               line-height: 24px;
@@ -185,7 +187,7 @@
 
 .fifthScreen {
   height: calc(100vh - 166px);
-  background: #0e192a;
+  background: $main-color;
   display: flex;
   justify-content: center;
   align-items: center;
