@@ -24,7 +24,7 @@ const HeaderComponent = () => {
             <div className="header-holder-rs-contacts-controls">
               <div className="header-holder-rs-contacts-controls-inner">
                 <span className="header-holder-rs-contacts-controls-inner-number">
-                  +375 (44) <span>766-60-01</span>
+                  +375 (33) <span>651-12-12</span>
                 </span>
               </div>
             </div>
