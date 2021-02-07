@@ -7,7 +7,7 @@ import ustav from '../../shared/docs/ustav.pdf'
 
 import './About.scss'
 
-const About = () => {
+const About: React.FC = () => {
   return <section className="about-page">
     <div className="first">
       <div className="first-part">
@@ -52,10 +52,10 @@ const About = () => {
 
           <br/>
 
-          <a href={cert} target = "_blank">Раскрытие информации Сертификат</a>
+          <a href={cert} target = "_blank" rel="noreferrer">Раскрытие информации Сертификат</a>
           <br/>
           <br/>
-          <a href={ustav} target = "_blank">Раскрытие информации Устав</a>
+          <a href={ustav} target = "_blank" rel="noreferrer">Раскрытие информации Устав</a>
         </div>
       </div>
     </div>

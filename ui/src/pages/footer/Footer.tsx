@@ -8,8 +8,8 @@ import ustav from '../../shared/docs/ustav.pdf'
 const Footer = () => {
   return <footer>
     <div className="documents">
-      <a href={cert} target = "_blank" className="documents-item">Раскрытие информации Сертификат</a>
-      <a href={ustav} target = "_blank" className="documents-item">Раскрытие информации Устав</a>
+      <a href={cert} target = "_blank" rel="noreferrer" className="documents-item">Раскрытие информации Сертификат</a>
+      <a href={ustav} target = "_blank" rel="noreferrer" className="documents-item">Раскрытие информации Устав</a>
     </div>
     <div className="documents documents-info">
       <span className="document-info-copyright">

@@ -1,6 +1,6 @@
 import React from "react"
 
-const Catalog = () => {
+const Catalog: React.FC = () => {
   return <div >
 
   </div>

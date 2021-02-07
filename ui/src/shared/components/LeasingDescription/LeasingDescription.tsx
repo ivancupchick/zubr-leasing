@@ -17,8 +17,8 @@ const LeasingDescription = (props: LeasingDescriptionProps) => {
     <table>
       <thead>
         <tr>
-          { props.table.columnHeaders.map((d) => {
-            return <th className="table-subtitle">{d}</th>
+          { props.table.columnHeaders.map((d, i) => {
+            return <th key={i} className="table-subtitle">{d}</th>
           }) }
           {/* <th className="table-subtitle">Преимущества лизинга:</th>
           <th className="table-subtitle">Условия лизинга:</th> */}
@@ -29,16 +29,16 @@ const LeasingDescription = (props: LeasingDescriptionProps) => {
           <td width="50%" valign="top">
             {/* style="padding-right:0px; width:100%;" */}
             <ul>
-              { props.table.columns[0].map((d) => {
-                return <li dangerouslySetInnerHTML={{ __html: d } }></li>
+              { props.table.columns[0].map((d, i) => {
+                return <li key={i} dangerouslySetInnerHTML={{ __html: d } }></li>
               }) }
             </ul>
           </td>
           <td valign="top" className="table-text">
             {/* style="padding-right:0px; width:100%;" */}
             <ul>
-              { props.table.columns[1].map((d) => {
-                return <li dangerouslySetInnerHTML={{ __html: d } }></li>
+              { props.table.columns[1].map((d, i) => {
+                return <li key={i} dangerouslySetInnerHTML={{ __html: d } }></li>
               }) }
             </ul>
           </td>

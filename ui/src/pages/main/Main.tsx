@@ -8,7 +8,7 @@ import carActua1 from './carActual1.jpeg'
 
 import './Main.scss'
 
-const Main = () => {
+const Main: React.FC = () => {
   return <div>
     <div className="firstScreen">
       <CommonCarouselMenu url=""></CommonCarouselMenu>
