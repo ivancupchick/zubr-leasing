@@ -168,6 +168,10 @@
           &:first-of-type {
             margin-left: 0;
           }
+
+          &_type_holiday {
+            background-color: white;
+          }
         }
 
         &-time {
@@ -318,6 +322,7 @@
         text-transform: uppercase;
         vertical-align: top;
         transition: all .3s;
+        white-space: nowrap;
       }
     }
 

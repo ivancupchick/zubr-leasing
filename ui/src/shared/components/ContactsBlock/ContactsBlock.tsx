@@ -27,7 +27,7 @@ class ContactsBlock extends React.Component  {
             <Map height={this.height} width={this.width} defaultState={{ center: [55.75, 37.57], zoom: 9,  }} />
           </div>
         </YMaps> */}
-        <iframe title="Карта" src="https://yandex.com/map-widget/v1/?um=constructor%3Af9d9c725f389933c43b66ddab91b66081682ae91080fa1535ea0104747cb153a&amp;source=constructor" width="100%" height="100%"></iframe>
+        <iframe title="Карта" src="https://yandex.ru/map-widget/v1/?um=constructor%3A70f915f133548a33001f90fc181b6e20de03762237fedaa3e37e275e00f85754&amp;source=constructor" width="100%" height="100%"></iframe>
         {/* <script type="text/javascript" charSet="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Af9d9c725f389933c43b66ddab91b66081682ae91080fa1535ea0104747cb153a&amp;width=100%25&amp;height=650&amp;lang=en_FR&amp;scroll=true"></script> */}
       </div>
       <div className="half content">

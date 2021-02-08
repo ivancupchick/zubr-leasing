@@ -45,12 +45,12 @@ const LeasingDescription = (props: LeasingDescriptionProps) => {
         </tr>
       </tbody>
     </table>
-    <br style={{ display: props.isIndividual ? 'block' : 'none'}} />
+    {/* <br style={{ display: props.isIndividual ? 'block' : 'none'}} />
     <a style={{ display: props.isIndividual ? 'block' : 'none'}}
        href="/"
        className="commonContent-link">
       Правовая оговорка компании Активлизинг
-    </a>
+    </a> */}
   </div>
 }
 
