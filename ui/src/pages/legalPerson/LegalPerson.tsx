@@ -11,7 +11,7 @@ const leasingDescriptionProps: LeasingDescriptionProps = {
   title: 'ЛИЗИНГ ДЛЯ ЮРИДИЧЕСКИХ ЛИЦ И ИНДИВИДУАЛЬНЫХ ПРЕДПРИНИМАТЕЛЕЙ',
   table: {
     columnHeaders: [
-      'Преимущества лизинга в Зубр-лизинг:',
+      'Преимущества лизинга в "ЗУБР ЛИЗИНГ":',
       ''
     ],
     columns: [
