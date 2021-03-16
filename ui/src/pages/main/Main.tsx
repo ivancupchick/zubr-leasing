@@ -8,7 +8,38 @@ import carActua1 from './carActual1.jpeg'
 
 import './Main.scss'
 
-const Main: React.FC = () => {
+export type GetVehicle = {
+  id: number;
+  post_title?: string;
+  post_name?: string;
+  attachments?: string[];
+  vehicle_overview?: string;
+  year?: string;
+  petrol?: string;
+  engineCapacity?: string;
+  transmission?: string;
+  mileage?: string;
+  bodyType?: string;
+  wheelDrive?: string;
+  price?: string;
+  video?: string;
+}
+
+type Props = {
+  cars: GetVehicle[];
+  cur: number;
+}
+
+const Main: React.FC<Props> = ({ cars, cur }) => {
+  const cars4: GetVehicle[][] = [];
+  cars.forEach((c, i) => {
+    if (i % 4 === 0) {
+      cars4.push([c]);
+    } else {
+      cars4[cars4.length - 1].push(c);
+    }
+  })
+
   return <div>
     <div className="firstScreen">
       <CommonCarouselMenu url=""></CommonCarouselMenu>
@@ -30,27 +61,38 @@ const Main: React.FC = () => {
     <section className="screen thirdScreen">
       <h2>Актуальные предложения</h2>
       <Carousel>
-        <Carousel.Item>
-          <div className="cars">
-            <div className="cars-item">
-              <a href="/" className="cars-item-img">
-                <img src={carActua1} alt="" title=""/>
-              </a>
-              <div className="cars-item-description">
-                <a href="/">BMW 7 серия</a>
-                <span className="cars-item-description-price usd">
-                168 334 USD
-                </span>
-                <span className="cars-item-description-price">
-                428 831.00 BYN
-                </span>
+      {
+        cars4.filter((car4, i) => i < 5).map(с4 => {
+          return (
+            <Carousel.Item>
+              <div className="cars">
+                { с4.map(c => {
+                  const url = `http://izy.by/inventory/${c.post_name}`
+                  return (
+                    <div className="cars-item">
+                      <a href={url} target="_blank" rel="noreferrer" className="cars-item-img">
+                        <img src={c.attachments ? c.attachments[0] : carActua1} alt="" title=""/>
+                      </a>
+                      <div className="cars-item-description">
+                        <a href={url} target="_blank" rel="noreferrer" >{c.post_title}</a>
+                        <span className="cars-item-description-price usd">
+                          { c.price } USD
+                        </span>
+                        <span className="cars-item-description-price">
+                          { (Number(c.price || 0) * cur).toFixed(2) } BYN
+                        </span>
+                      </div>
+                    </div>
+                  )
+                }) }
               </div>
-            </div>
-          </div>
-          {/* <Carousel.Caption>
+              {/* <Carousel.Caption>
 
-          </Carousel.Caption> */}
-        </Carousel.Item>
+              </Carousel.Caption> */}
+            </Carousel.Item>
+          )
+        })
+      }
       </Carousel>
       <button>Смотреть ещё</button>
     </section>

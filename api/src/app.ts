@@ -5,7 +5,7 @@ import mysql from "mysql2";
 
 const app = express();
 app.listen(() => {
-  console.log()
+  console.log('listening...');
 })
 
 app.get('/', (req, res) => {

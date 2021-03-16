@@ -70,7 +70,11 @@ const carouselItems: CarouselItems = [{
   }
 }];
 
-const CommonCarouselMenu = (props: {url: string}) => {
+type Props = {
+  url: string;
+}
+
+const CommonCarouselMenu: React.FC<Props> = (props: Props) => {
   return <Carousel>
     {
       carouselItems.map((ci, i) => {

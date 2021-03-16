@@ -1,0 +1,120 @@
+@import '../../styles/shared.scss';
+
+.catalog-page {
+  width: 100%;
+  padding-top: 166px;
+
+  &-cars {
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    &-item {
+      width: 273px;
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+
+      &-link {
+
+        // position: relative;
+        // display: block;
+        overflow: hidden;
+
+        &:hover {
+          img {
+            outline: 0;
+            // overflow: hidden;
+            transform: scale3d(1.1, 1.1, 1);
+          }
+        }
+
+        img {
+          display: block;
+          height: auto;
+          width: 100%;
+          -webkit-transition: -webkit-transform 0.35s;
+          transition: transform 0.35s;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+        }
+      }
+
+      &-description {
+        box-sizing: border-box;
+        padding: 15px 15px 12px;
+        background-color: #f3f7fc;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+
+        a {
+          display: inline-block;
+          vertical-align: top;
+          color: $border-and-text-color-first;
+          font-size: 18px;
+          font-weight: bold;
+          line-height: 24px;
+          letter-spacing: .9px;
+          transition: all .3s;
+          max-height: 96px;
+          overflow: hidden;
+        }
+
+        &-characteristics {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          border-bottom: 1px solid rgba(14, 25, 42, 0.2);
+          // padding: 13px 0;
+          line-height: 26px;
+          letter-spacing: .7px;
+          text-align: left;
+
+          li {
+            // list-style-type: none;
+            // position: relative;
+
+            // &::before {
+            //   content: '';
+            //   position: absolute;
+            //   top: 10px;
+            //   left: -13px;
+            //   display: block;
+            //   width: 5px;
+            //   height: 5px;
+            //   background: #155c98;
+            //   margin-top: 0;
+            // }
+
+            span {
+              float: left;
+              width: 50%;
+
+              &:nth-child(2) {
+                font-weight: bold;
+              }
+            }
+          }
+        }
+
+        &-price {
+          display: block;
+          margin: 5px 0 0;
+          font-size: 18px;
+          font-weight: bold;
+          line-height: 30px;
+          letter-spacing: .9px;
+
+          &.usd {
+            margin: 10px 0 0;
+            color: #bb2242;
+            font-size: 24px;
+            letter-spacing: 1.2px;
+          }
+        }
+      }
+    }
+  }
+}
