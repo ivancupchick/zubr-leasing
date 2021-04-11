@@ -3,6 +3,9 @@ import { GetVehicle, VehicleWpToNormalFields, WPPostMetaType, WPPostType } from 
 import express from "express";
 import mysql from "mysql2";
 
+import nodemailer from 'nodemailer';
+import cors from 'cors';
+
 const app = express();
 app.listen(() => {
   console.log('listening...');
@@ -63,6 +66,59 @@ app.get('/api/', (req, res) => {
   // res.send('Hello World');
 })
 
+
+const transport = {
+  host: 'smtp.mail.ru', // Don’t forget to replace with the SMTP host of your provider
+  port: 465,
+  secure: true,
+  auth: {
+    user: 'info@zubr-leasing.by',
+    pass: '6587erdf@'
+  }
+}
+
+const transporter = nodemailer.createTransport(transport)
+transporter.verify((error, success) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Server is ready to take messages');
+  }
+});
+
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
+
+app.post('/api/email', (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', "*");
+  res.setHeader('Access-Control-Allow-Methods', "*");
+  res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
+
+  var name = req.body.name
+  var phone = req.body.phone
+  var content = `name: ${name} \n phone: ${phone} `
+
+  var mail = {
+    from: 'info@zubr-leasing.by',
+    to: 'info@zubr-leasing.by',  // Change to email address that you want to receive messages on
+    subject: 'Заявка на звонок zubr-leasing.by ',
+    text: content
+  }
+
+  transporter.sendMail(mail, (err, data) => {
+    if (err) {
+      res.json({
+        status: 'fail'
+      })
+    } else {
+      res.json({
+       status: 'success'
+      })
+    }
+  })
+})
 
 
 
