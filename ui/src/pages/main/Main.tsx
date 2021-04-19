@@ -32,7 +32,7 @@ type Props = {
 
 const Main: React.FC<Props> = ({ cars, cur }) => {
   const cars4: GetVehicle[][] = [];
-  cars.forEach((c, i) => {
+  cars.filter(c => c.post_title !== 'Черновик').forEach((c, i) => {
     if (i % 4 === 0) {
       cars4.push([c]);
     } else {
