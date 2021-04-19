@@ -87,6 +87,7 @@
   justify-content: center;
   align-items: center;
   padding-top: 166px;
+  height: auto;
 
   .carousel {
     width: 100%;
@@ -205,7 +206,7 @@
 }
 
 .fifthScreen {
-  height: calc(100vh - 166px);
+  height: auto; // calc(100vh - 166px);
   background: $main-color;
   display: flex;
   justify-content: center;
