@@ -6,6 +6,7 @@ import { LeasingDescription, LeasingDescriptionProps } from "../../shared/compon
 import { Footer } from "../footer/Footer"
 import { CommonCarouselMenu } from "../../shared/components/CommonCarouselMenu.tsx/CommonCarouselMenu"
 import { DocumentsBlock } from "../../shared/components/DocumentsBlock/DocumentsBlock"
+import legalPackage from '../../shared/docs/legal-package.docx';
 
 const leasingDescriptionProps: LeasingDescriptionProps = {
   title: 'ЛИЗИНГ ДЛЯ ЮРИДИЧЕСКИХ ЛИЦ И ИНДИВИДУАЛЬНЫХ ПРЕДПРИНИМАТЕЛЕЙ',
@@ -16,11 +17,11 @@ const leasingDescriptionProps: LeasingDescriptionProps = {
     ],
     columns: [
       [
-        'Специальные программы приобретения с автодилерами',
-        'Минимальный пакет документов для оформления - от <b>4х</b> документов',
+        'Специальные программы приобретения',
+        'Минимальный пакет документов',
         'Оформление в течение <b>2х</b> дней'
       ], [
-        'Минимальная предоплата - собственное участие от <b>10%</b> стоимости автомобиля',
+        'Собственное участие от <b>20%</b> стоимости автомобиля',
         'АвтоКАСКО по минимальным тарифам и с ежемесячной оплатой.',
         'Оплата по курсу НБРБ <b>без</b> дополнительных комиссий'
       ]
@@ -35,7 +36,7 @@ const LegalPerson: React.FC = () => {
       <section className="commonContent">
         <LeasingDescription {...leasingDescriptionProps}></LeasingDescription>
       </section>
-      <DocumentsBlock uploadDocsUrl="/" uploadDocsUrlSize="240.86 Кб"></DocumentsBlock>
+      <DocumentsBlock buttonIsNotExist={false} uploadDocsUrl={legalPackage} uploadDocsUrlSize="53 Кб"></DocumentsBlock>
       <Footer></Footer>
     </div>
 }

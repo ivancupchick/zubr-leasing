@@ -47,14 +47,25 @@ const Main: React.FC<Props> = ({ cars, cur }) => {
 
     <section className="screen secondScreen">
       <div className="auto left-auto">
-        <span className="animate__slideInDown">
-          Лизинг автомобилей для физических лиц
-        </span>
+        <span className="animate__slideInDown">ЛИЗИНГ АВТОМОБИЛЕЙ ДЛЯ ФИЗИЧЕСКИХ ЛИЦ</span>
+        <ul>
+          <li>Новые и б/у автомобили до 10 лет</li>
+          <li>Быстрое одобрение</li>
+          <li>Минимальный пакет документов</li>
+          <li>Удобные графики погашения</li>
+          <li>Несколько вариантов программ</li>
+          <li>Без дополнительных комиссий</li>
+        </ul>
       </div>
       <div className="auto right-auto">
-      <span>
-          Лизинг автомобилей для юридических лиц и ип
-        </span>
+        <span>ЛИЗИНГ АВТОМОБИЛЕЙ ДЛЯ ЮРИДИЧЕСКИХ ЛИЦ</span>
+        <ul>
+          <li>Новые и б/у автомобили до 10 лет</li>
+          <li>Быстрое рассмотрение документов</li>
+          <li>Удобные графики погашения</li>
+          <li>Несколько вариантов программ</li>
+          <li>Специальные условия лизинга</li>
+        </ul>
       </div>
     </section>
 

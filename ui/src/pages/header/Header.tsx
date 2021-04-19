@@ -1,10 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.scss';
 
-import { Nav, Navbar } from 'react-bootstrap';
+import { Button, Form, Modal, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+export const REACT_APP_API_URL = "http://zubr-leasing.by/api/email";
+export const REACT_APP_API_URL_prod = "./api/email";
+export const API_URL = process.env.NODE_ENV === "development" ? REACT_APP_API_URL : REACT_APP_API_URL_prod;
+
+// const post = async () => {
+//   const response = await fetch(API_URL);
+//   const data: GetVehicle[] = await response.json();
+//   return data;
+// }
+
 const HeaderComponent = () => {
+  const [show, setShow] = useState(false);
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+
+  const handleClose = (isNotClose: boolean) => {
+    if (isNotClose) {
+      console.log(name);
+      console.log(phone);
+
+      fetch(API_URL, {
+          method: "POST",
+          body: JSON.stringify({ name, phone}),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        }).then(
+        (response) => (response.json())
+          ).then((response)=> {
+        if (response.status === 'success') {
+          alert("Заявка успешно отправлена");
+          setName('');
+          setPhone('');
+          setShow(false)
+        } else if(response.status === 'fail') {
+          alert("Заявка не отправлена, свяжитесь пожалуйста по телефону")
+          setShow(false)
+        }
+      })
+    } else {
+      setShow(false)
+    }
+  };
+  const handleShow = () => setShow(true);
+
   return <header className="header">
     <div className="header-top">
       <div className="header-holder">
@@ -55,10 +100,10 @@ const HeaderComponent = () => {
           </div>
           {/*  */}
           <div className="header-holder-rs-btn">
-            <a href="/" className="header-holder-rs-btn-personal">
+            <Button variant="link" onClick={handleShow} className="header-holder-rs-btn-personal">
               <span>Отправить заявку</span>
-              <span style={{ visibility: 'hidden' }} className="absl">вход</span>
-            </a>
+              {/* <span style={{ visibility: 'hidden' }} className="absl">вход</span> */}
+            </Button >
           </div>
           {/*  */}
         </div>
@@ -91,6 +136,33 @@ const HeaderComponent = () => {
         </Nav> */}
       </Navbar.Collapse>
     </Navbar>
+
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Заявка на консультацию</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+      <Form>
+        <Form.Group controlId="formBasicName">
+          <Form.Label>Имя</Form.Label>
+          <Form.Control onChange={(event) => setName(event.target.value)} type="name" placeholder="Введите имя" />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicPhone">
+          <Form.Label>Номер телефона</Form.Label>
+          <Form.Control onChange={(event) => setPhone(event.target.value)} type="phone" placeholder="+375290000000" />
+        </Form.Group>
+      </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={(e) => handleClose(false)}>
+          Закрыть
+        </Button>
+        <Button variant="primary" onClick={(e) => handleClose(true)}>
+          Отправить
+        </Button>
+      </Modal.Footer>
+    </Modal>
   </header>
 }
 

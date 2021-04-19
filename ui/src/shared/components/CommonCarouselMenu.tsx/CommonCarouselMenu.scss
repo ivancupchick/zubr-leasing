@@ -46,7 +46,7 @@
       // -webkit-tap-highlight-color: transparent;
 
       &.firstSlide {
-        background-image: url('./carouselImage/1.png');
+        background-image: url('./carouselImage/1.jpg');
       }
       &.secondSlide {
         background-image: url('./carouselImage/2.jpg');
@@ -54,12 +54,12 @@
       &.thirdSlide {
         background-image: url('./carouselImage/3.jpg');
       }
-      &.fourthSlide {
-        background-image: url('./carouselImage/4.png');
-      }
-      &.fifthSlide {
-        background-image: url('./carouselImage/5.png');
-      }
+      // &.fourthSlide {
+      //   background-image: url('./carouselImage/4.png');
+      // }
+      // &.fifthSlide {
+      //   background-image: url('./carouselImage/5.png');
+      // }
     }
   }
 

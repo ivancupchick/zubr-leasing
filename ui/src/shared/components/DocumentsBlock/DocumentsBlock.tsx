@@ -7,6 +7,7 @@ import './DocumentsBlock.scss'
 export interface DocumentsBlockProps {
   uploadDocsUrl: string;
   uploadDocsUrlSize: string;
+  buttonIsNotExist?: boolean;
 }
 
 const DocumentsBlock = (props: DocumentsBlockProps) => {
@@ -31,12 +32,21 @@ const DocumentsBlock = (props: DocumentsBlockProps) => {
           консультацию.
         </p>
         <br />
-        <div className="button-block">
-          <h3>Общие условия договора финансовой аренды</h3>
-        </div>
-        <div className="button-wrapper">
-          <a href="/" className="button-wrapper-btn">Смотреть</a>
-        </div>
+        { () => {
+          // if (props.buttonIsNotExist) {
+            return <></>
+          // }
+          // else {
+          //   return <>
+          //     <div className="button-block">
+          //       <h3>Общие условия договора финансовой аренды</h3>
+          //     </div>
+          //     <div className="button-wrapper">
+          //       <a href="/" className="button-wrapper-btn">Смотреть</a>
+          //     </div>
+          //   </>
+          // }
+        } }
       </div>
 
       <div className="docs-holder">

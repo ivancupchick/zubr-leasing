@@ -37,7 +37,7 @@ const Catalog: React.FC<Props> = ({ cars, cur }) => {
       </div> */}
     </div>
     <div className="catalog-page-cars">
-      { cars.map(c => {
+      { cars.filter(c => c.post_title !== 'Черновик').map(c => {
         const url = `http://izy.by/inventory/${c.post_name}`
 
         return <div className="catalog-page-cars-item">

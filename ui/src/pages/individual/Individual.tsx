@@ -8,6 +8,7 @@ import { DocumentsBlock } from "../../shared/components/DocumentsBlock/Documents
 import { Button, FormControl, InputGroup } from "react-bootstrap";
 import { CustomSlider } from "../../shared/components/CustomSlider/CustomSlider";
 import { calculatePLT } from "./leasingCalculationFuncs";
+import individualPackage from '../../shared/docs/individual-package.docx';
 
 const leasingDescriptionProps: LeasingDescriptionProps = {
   title: 'Лизинг для физических лиц',
@@ -18,17 +19,16 @@ const leasingDescriptionProps: LeasingDescriptionProps = {
     ],
     columns: [
       [
-        'Специальные программы &nbsp;с автодилерами',
-        'Услуга Trade-in - Ваш авто вместо аванса',
-        'Без справки о доходах',
-        'Платежи через ЕРИП без дополнительных комиссий',
-        'Оформление за 2 дня'
+        'Гибкий график погашения лизинговых платежей',
+        'Быстрое оформление',
+        'Минимальный пакет документов',
+        'Специальные программы финансирования'
       ], [
         'Легковые автомобили новые и б/у до 10 лет',
         'Собственное участие от 20%',
-        'Срок лизинга до 84 месяцев',
-        'Валюты договора: BYN, USD, EUR',
-        'Возраст: от 21 до 65 лет',
+        'Срок лизинга до 60 месяцев',
+        'Валюты договора: USD',
+        'Возраст: от 18 до 65 лет',
         'Гражданство РБ или вид на жительство'
       ]
     ]
@@ -205,7 +205,7 @@ const Individual: React.FC = () => {
         </div>
       </section>
 
-      <DocumentsBlock uploadDocsUrl="/" uploadDocsUrlSize="67.49 Кб"></DocumentsBlock>
+      <DocumentsBlock buttonIsNotExist={true} uploadDocsUrl={individualPackage} uploadDocsUrlSize="40 Кб"></DocumentsBlock>
       <Footer></Footer>
     </div>
   );
