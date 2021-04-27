@@ -38,6 +38,7 @@ export type GetVehicle = {
   attachments?: string[];
   vehicle_overview?: string;
   year?: string;
+  thumbnail_id?: string;
   petrol?: string;
   engineCapacity?: string;
   transmission?: string;
@@ -49,6 +50,7 @@ export type GetVehicle = {
 }
 
 export enum VehicleWpToNormalFields {
+  'thumbnail_id' = '_thumbnail_id',
   'year' = 'd0b3d0bed0b4-d0b2d18bd0bfd183d181d0bad0b0',
   'petrol' = 'd182d0bed0bfd0bbd0b8d0b2d0be',
   'engineCapacity' = 'd0bed0b1d18ad191d0bc',

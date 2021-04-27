@@ -34,19 +34,14 @@ app.get('/api/', (req, res) => {
       console.log(d);
 
       // res.send(d[0]);
-      const result: WPPostType[] = d[0] as any;
+      const result: WPPostType[] = (d[0] as any[]).filter(c => !!c.post_name);
       cars.push(...result.map(r => ({ id: r.ID, post_title: r.post_title, post_name: r.post_name })));
 
-      return connection.query(`SELECT * FROM \`wp_posts\` WHERE post_type = 'attachment' AND post_parent IN (${cars.map(c => c.id).join(', ')})`)
-    }).then((d) => {
-      const attachments: WPPostType[] = d[0] as any;
-      cars.forEach(car => {
-        car.attachments = attachments.filter(att => att.post_parent === car.id).map(att => att.guid);
-      })
       return connection.query(`SELECT * FROM \`wp_postmeta\` WHERE post_id IN (${cars.map(c => c.id).join(', ')})`)
     }).then((d) => {
       cars.forEach(car => {
         const carFields: WPPostMetaType[] = (d[0] as any[]).filter(dd => dd.post_id == car.id);
+        car.thumbnail_id = carFields.find(cf => cf.meta_key == VehicleWpToNormalFields.thumbnail_id)?.meta_value || '';
         car.year = carFields.find(cf => cf.meta_key == VehicleWpToNormalFields.year)?.meta_value || '';
         car.bodyType = carFields.find(cf => cf.meta_key == VehicleWpToNormalFields.bodyType)?.meta_value || '';
         car.engineCapacity = carFields.find(cf => cf.meta_key == VehicleWpToNormalFields.engineCapacity)?.meta_value || '';
@@ -57,6 +52,14 @@ app.get('/api/', (req, res) => {
         car.wheelDrive = carFields.find(cf => cf.meta_key == VehicleWpToNormalFields.wheelDrive)?.meta_value || '';
         car.vehicle_overview = carFields.find(cf => cf.meta_key == VehicleWpToNormalFields.vehicle_overview)?.meta_value || '';
         car.video = carFields.find(cf => cf.meta_key == VehicleWpToNormalFields.video)?.meta_value || '';
+      })
+
+      return connection.query(`SELECT * FROM \`wp_posts\` WHERE post_type = 'attachment' AND post_parent IN (${cars.map(c => c.id).join(', ')})`)
+    }).then((d) => {
+      const attachments: WPPostType[] = d[0] as any;
+      cars.forEach(car => {
+        car.attachments = [ (attachments.find(att => att.ID == Number(car.thumbnail_id || 0))?.guid || '') ];
+        car.attachments.push(...attachments.filter(att => att.post_parent === car.id && att.ID != Number(car.thumbnail_id || 0)).map(att => att.guid));
       })
       res.send(cars);
       connection.end();
