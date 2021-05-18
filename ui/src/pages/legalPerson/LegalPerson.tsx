@@ -4,7 +4,7 @@ import './LegalPerson.scss'
 
 import { LeasingDescription, LeasingDescriptionProps } from "../../shared/components/LeasingDescription/LeasingDescription"
 import { Footer } from "../footer/Footer"
-import { CommonCarouselMenu } from "../../shared/components/CommonCarouselMenu.tsx/CommonCarouselMenu"
+import { CommonCarouselMenu } from "../../shared/components/CommonCarouselMenu/CommonCarouselMenu"
 import { DocumentsBlock } from "../../shared/components/DocumentsBlock/DocumentsBlock"
 import legalPackage from '../../shared/docs/legal-package.docx';
 

@@ -79,7 +79,7 @@ const CommonCarouselMenu: React.FC<Props> = (props: Props) => {
     }
 
     if (url === 'sendMail') {
-      return <a className="button" onClick={handleShow} >{text}</a>;
+      return <a className="button" href="/" onClick={handleShow} >{text}</a>;
     }
 
     return <a className="button" href="/" >{text}</a>;
@@ -118,7 +118,11 @@ const CommonCarouselMenu: React.FC<Props> = (props: Props) => {
       setShow(false)
     }
   };
-  const handleShow = () => setShow(true);
+  const handleShow = (e: React.PointerEvent<HTMLAnchorElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setShow(true);
+  };
 
   return <>
     <Carousel>

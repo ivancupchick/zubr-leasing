@@ -1,7 +1,7 @@
 import React from "react"
 
 import Carousel from 'react-bootstrap/Carousel'
-import { CommonCarouselMenu } from "../../shared/components/CommonCarouselMenu.tsx/CommonCarouselMenu"
+import { CommonCarouselMenu } from "../../shared/components/CommonCarouselMenu/CommonCarouselMenu"
 import { ContactsBlock } from "../../shared/components/ContactsBlock/ContactsBlock"
 import { Footer } from "../footer/Footer"
 import carActua1 from './carActual1.jpeg'

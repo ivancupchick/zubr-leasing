@@ -23,7 +23,7 @@ const Footer = () => {
     </div>
     <div className="documents documents-info">
       <span className="document-info-copyright">
-        © ООО "ЗУБР ЛИЗИНГ" 2020. Все права защищены
+        © ООО "ЗУБР ЛИЗИНГ" 2021. Все права защищены
       </span>
     </div>
   </footer>
