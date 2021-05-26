@@ -24,7 +24,7 @@ code {
 .layout-holder, .header-holder, .menu-holder, .footer-holder, .promo-inner, .section-holder {
   margin: auto;
   max-width: 1400px;
-  min-width: 980px;
+  // min-width: 980px;
   // min-width: 1000px;
   padding-right: 15px;
   padding-left: 15px;
@@ -51,4 +51,8 @@ img {
 
 audio, canvas, img, video {
   vertical-align: middle;
+}
+
+h2 {
+  text-align: center;
 }

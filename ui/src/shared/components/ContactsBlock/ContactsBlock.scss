@@ -8,7 +8,7 @@
   // height: 100%;
 
   .half {
-    width: 50%;
+    width: 100%;
     height: 100%;
   }
 
@@ -88,6 +88,23 @@
         li:first-child {
           margin-top: 0;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 620px) {
+  .wrapper-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 100px;
+
+    .half {
+      width: 100%;
+      height: 50%;
+
+      &.map {
+        order: 2;
       }
     }
   }

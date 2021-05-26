@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Button, Form, Modal } from "react-bootstrap"
 
 import Carousel from 'react-bootstrap/Carousel'
+import { Link } from "react-router-dom"
 
 import firstSlideImage from './carouselImage/1.jpg'
 import secondSlideImage from './carouselImage/2.jpg'
@@ -39,7 +40,7 @@ const carouselItems: CarouselItems = [{
   texts: {
     title: 'ЛИЗИНГ АВТО ДЛЯ ЮРИДИЧЕСКИХ ЛИЦ',
     subTitle: 'НОВЫХ И Б/У АВТОМОБИЛЕЙ',
-    exprasionTextForButton: 'legalPerson',
+    exprasionTextForButton: 'legal',
     buttonText: 'Подробнее'
   }
 }, {
@@ -73,8 +74,9 @@ type Props = {
 }
 
 const CommonCarouselMenu: React.FC<Props> = (props: Props) => {
-  const getButton = (props: any, text: string, url?: string) => {
+  const getButton = (props: any, text: string, url: string = '') => {
     if (props.url === url && url) {
+      console.log(1);
       return '';
     }
 
@@ -82,7 +84,7 @@ const CommonCarouselMenu: React.FC<Props> = (props: Props) => {
       return <a className="button" href="/" onClick={handleShow} >{text}</a>;
     }
 
-    return <a className="button" href="/" >{text}</a>;
+    return <Link className="button" to={`/${url}`}>{text}</Link>;
   }
 
   const [show, setShow] = useState(false);
@@ -124,11 +126,18 @@ const CommonCarouselMenu: React.FC<Props> = (props: Props) => {
     setShow(true);
   };
 
+  const handleLink = (e: React.PointerEvent<HTMLAnchorElement> |  React.MouseEvent<HTMLAnchorElement, MouseEvent>, url: string) => {
+    e.stopPropagation();
+    e.preventDefault();
+    console.log(url)
+  };
+
   return <>
     <Carousel>
       {
         carouselItems.map((ci, i) => {
-          return <Carousel.Item key={i}>
+          // interval={100000}
+          return <Carousel.Item  key={i}>
           <div
             className="img d-block w-100"
             style={{ backgroundImage: `url(${ci.slideUrl})` }}

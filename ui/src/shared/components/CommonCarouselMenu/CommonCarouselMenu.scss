@@ -138,6 +138,21 @@
         }
       }
     }
+
+    @media (max-width: 620px) {
+      .wrapper-caption {
+        padding-left: 10px;
+        &-content {
+          &-title {
+            font-size: 5vw;
+          }
+
+          &-subTitle {
+            font-size: 4vw;
+          }
+        }
+      }
+    }
   }
 
   &-control {

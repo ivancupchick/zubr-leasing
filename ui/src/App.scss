@@ -1,5 +1,6 @@
 // @import "~bootstrap/scss/bootstrap";
 @import './styles/custom.scss';
+@import './styles/shared.scss';
 
 .App {
   text-align: center;
@@ -43,6 +44,22 @@
 .layout {
   &>div:nth-child(2) {
     // position: relative;
-    padding-top: 166px;
+    padding-top: $header-height-lg;
+  }
+}
+
+@media (max-width: 820px) {
+  .layout {
+    &>div:nth-child(2) {
+      padding-top: $header-height-md;
+    }
+  }
+}
+
+@media (max-width: 620px) {
+  .layout {
+    &>div:nth-child(2) {
+      padding-top: $header-height-sm;
+    }
   }
 }

@@ -7,6 +7,9 @@
   left: 0;
   z-index: 1000;
   background: $white-color;
+  display: flex;
+  flex-direction: column;
+  height: $header-height-lg;
 
   &-top {
     position: relative;
@@ -16,18 +19,30 @@
     transition: all .3s;
   }
 
+  @media (max-width: 820px) {
+    &-top {
+      padding: 0;
+    }
+  }
+
   &-holder {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+    @media (max-width: 820px) {
+      .logo-wrap-logo {
+        display: none;
+      }
+    }
+
     .logo {
       &-wrap {
-        position: relative;
-        width: 243px;
-        height: 72px;
-        float: left;
-        z-index: 10;
+        // position: relative;
+        // width: 243px;
+        // height: 72px;
+        // float: left;
+        // z-index: 10;
 
         &-logo {
           font: 0/0 a;
@@ -57,7 +72,7 @@
     }
 
     &-rs {
-      width: calc(100% - 410px);
+      width: 100%;
 
       display: flex;
       align-items: center;
@@ -68,7 +83,7 @@
         margin-right: 0;
         // float: left;
         display: inline-block;
-        margin-right: 150px;
+        // margin-right: 150px;
         line-height: 61px;
         text-align: left;
         vertical-align: top;
@@ -185,8 +200,29 @@
         }
       }
 
+      @media (max-width: 620px) {
+        .mode {
+          display: none;
+        }
+        .header-holder-rs-contacts {
+          &-controls {
+            height: unset;
+
+            &-inner {
+              &-number {
+                font-size: 13px;
+
+                span {
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+        }
+      }
+
       // candidate to delete
-      &-btn {
+      .btn {
         padding-left: 10px;
 
         &-personal {
@@ -244,8 +280,19 @@
           }
         }
       }
+
+      @media (max-width: 620px) {
+        .btn-personal {
+          padding: 8px 7px 5px 7px;
+          height: 15px;
+          text-align: center;
+          font-size: 11px;
+        }
+      }
     }
   }
+
+
 
 
 
@@ -340,5 +387,17 @@
     .nav-link {
       // color: $white-color !important;
     }
+  }
+}
+
+@media (max-width: 820px) {
+  .header {
+    height: $header-height-md;
+  }
+}
+
+@media (max-width: 620px) {
+  .header {
+    height: $header-height-sm;
   }
 }

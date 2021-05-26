@@ -32,11 +32,19 @@ type Props = {
 
 const Main: React.FC<Props> = ({ cars, cur }) => {
   const cars4: GetVehicle[][] = [];
+  const cars2: GetVehicle[][] = [];
   cars.filter(c => c.post_title !== 'Черновик').forEach((c, i) => {
     if (i % 4 === 0) {
       cars4.push([c]);
     } else {
       cars4[cars4.length - 1].push(c);
+    }
+  })
+  cars.filter(c => c.post_title !== 'Черновик').forEach((c, i) => {
+    if (i % 2 === 0) {
+      cars2.push([c]);
+    } else {
+      cars2[cars2.length - 1].push(c);
     }
   })
 
@@ -47,7 +55,8 @@ const Main: React.FC<Props> = ({ cars, cur }) => {
 
     <section className="screen secondScreen">
       <div className="auto left-auto">
-        <span className="animate__slideInDown">ЛИЗИНГ АВТОМОБИЛЕЙ ДЛЯ ФИЗИЧЕСКИХ ЛИЦ</span>
+        <div className="background"></div>
+        <h3 className="animate__slideInDown">ЛИЗИНГ АВТОМОБИЛЕЙ ДЛЯ ФИЗИЧЕСКИХ ЛИЦ</h3>
         <ul>
           <li>Новые и б/у автомобили до 10 лет</li>
           <li>Быстрое одобрение</li>
@@ -58,7 +67,8 @@ const Main: React.FC<Props> = ({ cars, cur }) => {
         </ul>
       </div>
       <div className="auto right-auto">
-        <span>ЛИЗИНГ АВТОМОБИЛЕЙ ДЛЯ ЮРИДИЧЕСКИХ ЛИЦ</span>
+        <div className="background"></div>
+        <h3>ЛИЗИНГ АВТОМОБИЛЕЙ ДЛЯ ЮРИДИЧЕСКИХ ЛИЦ</h3>
         <ul>
           <li>Новые и б/у автомобили до 10 лет</li>
           <li>Быстрое рассмотрение документов</li>
@@ -73,7 +83,7 @@ const Main: React.FC<Props> = ({ cars, cur }) => {
       <h2>Актуальные предложения</h2>
       <Carousel>
       {
-        cars4.filter((car4, i) => i < 5).map(с4 => {
+        cars2.filter((car4, i) => i < 5).map(с4 => {
           return (
             <Carousel.Item>
               <div className="cars">
@@ -105,7 +115,7 @@ const Main: React.FC<Props> = ({ cars, cur }) => {
         })
       }
       </Carousel>
-      <button>Смотреть ещё</button>
+      {/* <button>Смотреть ещё</button> */}
     </section>
 
     <section className="screen fourthScreen">

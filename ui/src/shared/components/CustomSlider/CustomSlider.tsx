@@ -63,7 +63,7 @@ const CustomSlider = ({ value, onChange, min, max, step }: CustomSliderProps) =>
     onChange(values[0]);
   };
 
-  return <div style={{ height: 120, width: '100%' }}>
+  return <div className="custom-slider" style={{ height: 120, width: '100%' }}>
     <Slider
       mode={1}
       step={step || 1}

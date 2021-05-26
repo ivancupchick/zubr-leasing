@@ -12,7 +12,7 @@ footer {
   .documents {
     margin: auto;
     max-width: 1400px;
-    min-width: 1000px;
+    // min-width: 1000px;
     padding-right: 15px;
     padding-left: 15px;
 
@@ -53,6 +53,17 @@ footer {
       &-copyright {
         float: left;
         color: #b4bbc2;
+      }
+    }
+
+    @media (max-width: 820px) {
+      &-item {
+        margin: 0;
+        margin-top: 20px;
+
+        &:first-child {
+          margin-top: 0;
+        }
       }
     }
   }

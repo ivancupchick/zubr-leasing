@@ -53,7 +53,11 @@ const HeaderComponent = () => {
   return <header className="header">
     <div className="header-top">
       <div className="header-holder">
-        <div className="logo-wrap">
+        {/* <div className="logo-wrap">
+
+        </div> */}
+
+        <div className="header-holder-rs">
           <a
             className={"logo-wrap-logo"}
             title="Лизинговые услуги в Минске, купить авто в лизинг в Беларуси (РБ)"
@@ -61,10 +65,6 @@ const HeaderComponent = () => {
           >
             Лизинговые услуги в Минске, купить авто в лизинг в Беларуси (РБ)
           </a>
-          {/* <div className={"logo-wrap-numberOnePicture"}></div> */}
-        </div>
-
-        <div className="header-holder-rs">
           <div className="header-holder-rs-contacts">
             <div className="header-holder-rs-contacts-controls">
               <div className="header-holder-rs-contacts-controls-inner">
@@ -99,8 +99,8 @@ const HeaderComponent = () => {
             </div>
           </div>
           {/*  */}
-          <div className="header-holder-rs-btn">
-            <Button variant="link" onClick={handleShow} className="header-holder-rs-btn-personal">
+          <div className="btn">
+            <Button variant="link" onClick={handleShow} className="btn-personal">
               <span>Отправить заявку</span>
               {/* <span style={{ visibility: 'hidden' }} className="absl">вход</span> */}
             </Button >
@@ -109,7 +109,7 @@ const HeaderComponent = () => {
         </div>
       </div>
     </div>
-    <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
       {/* <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand> */}
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">

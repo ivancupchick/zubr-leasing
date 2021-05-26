@@ -32,7 +32,7 @@ const leasingDescriptionProps: LeasingDescriptionProps = {
 
 const LegalPerson: React.FC = () => {
   return <div className="wrapper">
-      <CommonCarouselMenu url="legalPerson"></CommonCarouselMenu>
+      <CommonCarouselMenu url="legal"></CommonCarouselMenu>
       <section className="commonContent">
         <LeasingDescription {...leasingDescriptionProps}></LeasingDescription>
       </section>
