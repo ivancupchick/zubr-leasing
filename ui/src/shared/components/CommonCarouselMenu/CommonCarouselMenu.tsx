@@ -126,11 +126,11 @@ const CommonCarouselMenu: React.FC<Props> = (props: Props) => {
     setShow(true);
   };
 
-  const handleLink = (e: React.PointerEvent<HTMLAnchorElement> |  React.MouseEvent<HTMLAnchorElement, MouseEvent>, url: string) => {
-    e.stopPropagation();
-    e.preventDefault();
-    console.log(url)
-  };
+  // const handleLink = (e: React.PointerEvent<HTMLAnchorElement> |  React.MouseEvent<HTMLAnchorElement, MouseEvent>, url: string) => {
+  //   e.stopPropagation();
+  //   e.preventDefault();
+  //   console.log(url)
+  // };
 
   return <>
     <Carousel>
