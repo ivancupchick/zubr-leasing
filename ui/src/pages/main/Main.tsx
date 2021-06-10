@@ -83,7 +83,7 @@ const Main: React.FC<Props> = ({ cars, cur }) => {
       <h2>Актуальные предложения</h2>
       <Carousel>
       {
-        cars2.filter((car4, i) => i < 5).map(с4 => {
+        (window.innerWidth < 821 ? cars2 : cars4).filter((car4, i) => i < 5).map(с4 => {
           return (
             <Carousel.Item>
               <div className="cars">

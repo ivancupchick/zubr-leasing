@@ -171,6 +171,9 @@ const Calculator: React.FC<LeasingDescriptionProps> = (props: LeasingDescription
       </div>
     </div>
     <div className="calculateSection-container-request">
+      <div className="calculateSection-container-request-title">
+        <h3>Обратный звонок</h3>
+      </div>
       <div className="calculateSection-container-request-fields">
         <div className="calculateSection-container-request-fields-name">
           <InputGroup className="mb-3">

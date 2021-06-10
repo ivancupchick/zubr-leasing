@@ -31,6 +31,9 @@ type Props = {
 const Catalog: React.FC<Props> = ({ cars, cur }) => {
 
   return <section className="catalog-page">
+    <div className="catalog-page-title">
+      <h3>Специальные предложения от партнёров</h3>
+    </div>
     <div className="catalog-page-search">
       {/* <div className="catalog-page-search-sort">
 

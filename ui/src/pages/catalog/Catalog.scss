@@ -4,6 +4,15 @@
   width: 100%;
   padding-top: 166px;
 
+  &-title {
+    width: 100%;
+
+    h3 {
+      margin-top: 20px;
+      text-align: center;
+    }
+  }
+
   &-cars {
     display: flex;
     padding: 20px;

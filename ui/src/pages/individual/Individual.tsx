@@ -37,7 +37,7 @@ const leasingDescriptionProps: LeasingDescriptionProps = {
 const Individual: React.FC = () => {
   return (
     <div className="wrapper">
-      <CommonCarouselMenu url="individual"></CommonCarouselMenu>
+      {/* <CommonCarouselMenu url="individual"></CommonCarouselMenu> */}
       <section className="commonContent">
         <LeasingDescription {...leasingDescriptionProps}></LeasingDescription>
       </section>
