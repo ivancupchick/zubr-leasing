@@ -27,14 +27,17 @@ export const Handle: React.SFC<IHandleProps> = ({
       left: `${percent}%`,
       position: 'absolute',
       marginLeft: '-11px',
-      marginTop: '-6px',
+      marginTop: '-12px',
       zIndex: 2,
-      width: 24,
-      height: 24,
+      width: 32,
+      height: 32,
+      boxShadow: `0 0 3px 0 rgb(97 158 0 / 54%)`,
+      border: `8px solid #fff`,
+      backgroundColor: `#7ab800`,
       cursor: 'pointer',
       borderRadius: '50%',
-      boxShadow: '1px 1px 1px 1px rgba(0, 0, 0, 0.2)',
-      backgroundColor: '#34568f'
+      // boxShadow: '1px 1px 1px 1px rgba(0, 0, 0, 0.2)',
+      // backgroundColor: '#34568f'
     }}
     {...getHandleProps(id)}
   />
@@ -57,10 +60,12 @@ export const Track: React.SFC<ITrackProps> = ({
   <div
     style={{
       position: 'absolute',
-      height: 14,
+      height: 8,
       zIndex: 1,
-      backgroundColor: '#7aa0c4',
-      borderRadius: 7,
+      background: `linear-gradient(
+        90deg
+        ,#2b5099,#00979a 49%,#78b801)`,
+      borderRadius: 4,
       cursor: 'pointer',
       left: `${source.percent}%`,
       width: `${target.percent - source.percent}%`

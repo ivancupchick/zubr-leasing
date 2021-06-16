@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Button, FormControl, InputGroup } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { FormControl, InputGroup } from "react-bootstrap";
 import { CustomSlider } from "../CustomSlider/CustomSlider";
 
 import './Calculator.scss';
-import { calculatePLT } from "./funcs";
+// import { calculatePLT } from "./funcs";
 
 export interface LeasingDescriptionProps {
   maxPriceInput?: number;
@@ -13,9 +13,13 @@ export interface LeasingDescriptionProps {
   maxFirstPaymentInput?: number;
   minFirstPaymentInput?: number;
   stepFirstPaymentInput?: number;
+
+  onChangePeriodAndFirstPayment?: (period: number, firstPayment: number) => void;
 }
 
-const Calculator: React.FC<LeasingDescriptionProps> = (props: LeasingDescriptionProps) => {
+// price its period
+
+const CalculatorCatalog: React.FC<LeasingDescriptionProps> = (props: LeasingDescriptionProps) => {
   const [priceInputValue, setPriceInputValue] = useState<number>(0);
   const [priceSliderValue, setPriceSliderValue] = useState<number>(0);
   const onChangePriceInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,18 +63,22 @@ const Calculator: React.FC<LeasingDescriptionProps> = (props: LeasingDescription
     setFirstPaymentInputValue(v || 0);
   }
 
-  const [nameValue, setNameValue] = useState('');
-  const [phoneValue, setPhoneValue] = useState('');
-
+  useEffect(() => {
+    if (props.onChangePeriodAndFirstPayment) {
+      props.onChangePeriodAndFirstPayment(priceSliderValue, firstPaymentSliderValue)
+    }
+  });
 
   return <div className="calculateSection-container">
-    <h2>Рассчитать лизинг</h2>
+    <h2 style={{
+      marginBottom: '20px'
+    }}>Калькулятор лизинга</h2>
     <div className="calculateSection-container-slides">
       <div className="calculateSection-container-slides-price">
         <div className="calculateSection-container-slides-price-field">
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-price">Стоимость автомобиля</InputGroup.Text>
+              <InputGroup.Text id="inputGroup-sizing-price">Срок лизинга</InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
               aria-label="price"
@@ -80,7 +88,7 @@ const Calculator: React.FC<LeasingDescriptionProps> = (props: LeasingDescription
               onBlur={onBlurPriceInputValue}
             />
             <InputGroup.Append>
-              <InputGroup.Text>$</InputGroup.Text>
+              <InputGroup.Text>Месяцев</InputGroup.Text>
             </InputGroup.Append>
           </InputGroup>
         </div>
@@ -109,117 +117,28 @@ const Calculator: React.FC<LeasingDescriptionProps> = (props: LeasingDescription
     </div>
     <div className="calculateSection-container-programs">
       <div className="calculateSection-container-programs-standart">
-        <h3>Программа "Стандартный лизинг"</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Срок:</th>
-              <th>Платёж:</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1 год</td>
-              <td>{ calculatePLT(priceSliderValue, 12, 25, firstPaymentSliderValue) }</td>
-            </tr>
-            <tr>
-              <td>2 года</td>
-              <td>{ calculatePLT(priceSliderValue, 24, 25, firstPaymentSliderValue) }</td>
-            </tr>
-            <tr>
-              <td>3 года</td>
-              <td>{ calculatePLT(priceSliderValue, 36, 25, firstPaymentSliderValue) }</td>
-            </tr>
-            <tr>
-              <td>4 года</td>
-              <td>{ calculatePLT(priceSliderValue, 48, 25, firstPaymentSliderValue) }</td>
-            </tr>
-            <tr>
-              <td>5 лет</td>
-              <td>{ calculatePLT(priceSliderValue, 60, 25, firstPaymentSliderValue) }</td>
-            </tr>
-          </tbody>
-        </table>
-
         <ul>
           <li>В расчёт не включено страхование на условиях полного КАСКО</li>
           <li>Все расчёты являются справочными и не являются публичной офертой</li>
         </ul>
       </div>
-      {/* <div className="calculateSection-container-programs-euro">
-        <h3>Программа "Евролизинг"</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Срок:</th>
-              <th>Платёж:</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1 год</td>
-              <td>{ calculatePLT(priceSliderValue, 12, 17, firstPaymentSliderValue) }</td>
-            </tr>
-            <tr>
-              <td>2 года</td>
-              <td>{ calculatePLT(priceSliderValue, 24, 17, firstPaymentSliderValue) }</td>
-            </tr>
-            <tr>
-              <td>3 года</td>
-              <td>{ calculatePLT(priceSliderValue, 36, 17, firstPaymentSliderValue) }</td>
-            </tr>
-          </tbody>
-        </table>
-      </div> */}
     </div>
-    <div className="calculateSection-container-request">
-      <div className="calculateSection-container-request-title">
-        <h3>Заявка на финансирование</h3>
-      </div>
-      <div className="calculateSection-container-request-fields">
-        <div className="calculateSection-container-request-fields-name">
-          <InputGroup className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-nameValue">Имя</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              aria-label="nameValue"
-              aria-describedby="inputGroup-sizing-nameValue"
-              value={nameValue}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setNameValue(e.target.value || '') }}
-            />
-          </InputGroup>
-        </div>
-        <div className="calculateSection-container-request-fields-phone">
-          <InputGroup className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-phoneValue">Телефон</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              aria-label="phoneValue"
-              aria-describedby="inputGroup-sizing-phoneValue"
-              value={phoneValue}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setPhoneValue(e.target.value || '') }}
-            />
-          </InputGroup>
-        </div>
-      </div>
-      <div className="calculateSection-container-request-container">
-        <Button variant="primary">Отправить</Button>
-      </div>
-    </div>
+
+    {/* calculatePLT(priceSliderValue, 60, 25, firstPaymentSliderValue) */}
   </div>
 }
 
-Calculator.defaultProps = {
-  maxPriceInput: 40000,
-  minPriceInput: 5000,
-  stepPriceInput: 500,
+CalculatorCatalog.defaultProps = {
+  maxPriceInput: 60,
+  minPriceInput: 12,
+  stepPriceInput: 12,
   maxFirstPaymentInput: 40,
   minFirstPaymentInput: 20,
-  stepFirstPaymentInput: 5
+  stepFirstPaymentInput: 5,
+
+  onChangePeriodAndFirstPayment: undefined
 };
 
 export {
-  Calculator
+  CalculatorCatalog
 }

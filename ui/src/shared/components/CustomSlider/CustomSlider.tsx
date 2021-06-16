@@ -19,10 +19,10 @@ const sliderStyle: React.CSSProperties = {
 const railStyle: React.CSSProperties = {
   position: 'absolute',
   width: '100%',
-  height: 14,
-  borderRadius: 7,
+  height: 8,
+  borderRadius: 4,
   cursor: 'pointer',
-  backgroundColor: 'rgb(155,155,155)'
+  backgroundColor: '#ced4da'
 };
 
 

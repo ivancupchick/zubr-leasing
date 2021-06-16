@@ -13,6 +13,10 @@
     }
   }
 
+  &-search {
+    margin: 10px 30px;
+  }
+
   &-cars {
     display: flex;
     padding: 20px;
@@ -109,19 +113,26 @@
         }
 
         &-price {
-          display: block;
-          margin: 5px 0 0;
-          font-size: 18px;
+          // display: block;
+          // margin: 5px 10px 0;
+          font-size: 14px;
           font-weight: bold;
           line-height: 30px;
           letter-spacing: .9px;
 
           &.usd {
-            margin: 10px 0 0;
+            // margin: 10px 0 0;
+            margin-right: 5px;
             color: #bb2242;
-            font-size: 24px;
+            font-size: 16px;
             letter-spacing: 1.2px;
           }
+        }
+
+        &-span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
       }
     }
