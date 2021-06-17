@@ -25,6 +25,8 @@ app.get('/api/', (req, res) => {
 
   const cars: GetVehicle[] = [];
 
+  console.log(0);
+
   mysqlssh.connect({
     host: '93.125.99.123',
     user: 'izyby',
@@ -38,19 +40,17 @@ app.get('/api/', (req, res) => {
   })
   .then((client: any) => {
     console.log(1);
-    client.query("SELECT * FROM wp_posts WHERE post_type = 'vehicle'" )
-      .then((d: any) => {
-        console.log(2);
+    client.query("SELECT * FROM wp_posts WHERE post_type = 'vehicle'", (err: any, d: any, fields: any) => {
+      console.log(2);
 
-        // res.send(d[0]);
-        const result: WPPostType[] = (d[0] as any[]).filter(c => !!c.post_name);
-        cars.push(...result.map(r => ({ id: r.ID, post_title: r.post_title, post_name: r.post_name })));
-
-        return client.query(`SELECT * FROM \`wp_postmeta\` WHERE post_id IN (${cars.map(c => c.id).join(', ')})`)
-      }).then((d: any) => {
+      // res.send(d[0]);
+      console.log(d[0]);
+      const result: WPPostType[] = (d as any[]).filter(c => !!c.post_name);
+      cars.push(...result.map(r => ({ id: r.ID, post_title: r.post_title, post_name: r.post_name })));
+      client.query(`SELECT * FROM \`wp_postmeta\` WHERE post_id IN (${cars.map(c => c.id).join(', ')})`, (errr: any, d2: any, fieldss: any) => {
         console.log(3);
         cars.forEach(car => {
-          const carFields: WPPostMetaType[] = (d[0] as any[]).filter(dd => dd.post_id == car.id);
+          const carFields: WPPostMetaType[] = (d2 as any[]).filter(dd => dd.post_id == car.id);
           car.thumbnail_id = carFields.find(cf => cf.meta_key == VehicleWpToNormalFields.thumbnail_id)?.meta_value || '';
           car.year = carFields.find(cf => cf.meta_key == VehicleWpToNormalFields.year)?.meta_value || '';
           car.bodyType = carFields.find(cf => cf.meta_key == VehicleWpToNormalFields.bodyType)?.meta_value || '';
@@ -62,20 +62,20 @@ app.get('/api/', (req, res) => {
           car.wheelDrive = carFields.find(cf => cf.meta_key == VehicleWpToNormalFields.wheelDrive)?.meta_value || '';
           car.vehicle_overview = carFields.find(cf => cf.meta_key == VehicleWpToNormalFields.vehicle_overview)?.meta_value || '';
           car.video = carFields.find(cf => cf.meta_key == VehicleWpToNormalFields.video)?.meta_value || '';
-        })
-
-        return client.query(`SELECT * FROM \`wp_posts\` WHERE post_type = 'attachment' AND post_parent IN (${cars.map(c => c.id).join(', ')})`)
-      }).then((d: any) => {
-        console.log(4);
-        const attachments: WPPostType[] = d[0] as any;
-        cars.forEach(car => {
-          car.attachments = [ (attachments.find(att => att.ID == Number(car.thumbnail_id || 0))?.guid || '') ];
-          car.attachments.push(...attachments.filter(att => att.post_parent === car.id && att.ID != Number(car.thumbnail_id || 0)).map(att => att.guid));
-        })
-        res.send(cars);
-        // client.end();
-        mysqlssh.close()
+        });
+        client.query(`SELECT * FROM \`wp_posts\` WHERE post_type = 'attachment' AND post_parent IN (${cars.map(c => c.id).join(', ')})`, (err3: any, d3: any, fields3: any) => {
+          console.log(4);
+          const attachments: WPPostType[] = d3 as any;
+          cars.forEach(car => {
+            car.attachments = [ (attachments.find(att => att.ID == Number(car.thumbnail_id || 0))?.guid || '') ];
+            car.attachments.push(...attachments.filter(att => att.post_parent === car.id && att.ID != Number(car.thumbnail_id || 0)).map(att => att.guid));
+          })
+          res.send(cars);
+          // client.end();
+          mysqlssh.close()
+        });
       });
+    });
   })
   .catch((err: any) => {
     console.log(err)

@@ -205,7 +205,7 @@ const Catalog: React.FC<Props> = ({ cars, cur }) => {
     </div>
     <div className="catalog-page-cars">
       { sortedCars.filter(c => c.post_title !== 'Черновик').map(c => {
-        const url = `http://izy.by/inventory/${c.post_name}`
+        const url = `http://zubr-auto.by/inventory/${c.post_name}`
 
         return <div key={`${c.id}`} className="catalog-page-cars-item">
           <a href={url} target="_blank" rel="noreferrer" className="catalog-page-cars-item-link">

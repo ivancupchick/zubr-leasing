@@ -88,7 +88,7 @@ const Main: React.FC<Props> = ({ cars, cur }) => {
             <Carousel.Item>
               <div className="cars">
                 { с4.map(c => {
-                  const url = `http://izy.by/inventory/${c.post_name}`
+                  const url = `http://zubr-auto.by/inventory/${c.post_name}`
                   return (
                     <div className="cars-item">
                       <a href={url} target="_blank" rel="noreferrer" className="cars-item-img">
