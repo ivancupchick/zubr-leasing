@@ -119,37 +119,193 @@ const Catalog: React.FC<Props> = ({ cars, cur }) => {
     <div className="catalog-page-search">
       <div className="catalog-page-search-simple">
         <div className="catalog-page-search-simple-field">
-          <Form.Group as={Row}>
-            <Form.Label column sm="2">
-              Марка
-            </Form.Label>
-            <Col sm="10">
-              {/* defaultValue="email@example.com" */}
-              <Form.Control value={selectedMark} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { onChangeMark(e.target.value || '') }} as="select">
-                <option value="any">Любая</option>
+          <Form.Row>
+            <Form.Group as={Col} controlId="a1">
+              <Form.Label>Марка</Form.Label>
+              <Form.Control
+                value={selectedMark}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { onChangeMark(e.target.value || '') }}
+                as="select"
+              >
+                <option value="any">Все марки</option>
                 { marks.map(m =>  <option key={m} value={m}>{m}</option>) }
-                {/* <option>2</option> */}
               </Form.Control>
-            </Col>
-          </Form.Group>
-        </div>
-        <div className="catalog-page-search-simple-field">
-          <Form.Group as={Row}>
-            <Form.Label column sm="2">
-              Модель
-            </Form.Label>
-            <Col sm="10">
-              {/* defaultValue="email@example.com" */}
-              <Form.Control disabled={selectedMark === 'any'} value={selectedModel} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectModel(e.target.value || '') }} as="select">
-                <option value="any">Любая</option>
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="a2">
+              <Form.Label>Модель</Form.Label>
+              <Form.Control
+                disabled={selectedMark === 'any'}
+                value={selectedModel}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectModel(e.target.value || '') }}
+                as="select"
+              >
+                <option value="any">Все модели</option>
                 {
                   selectedMark !== 'any' ? models[selectedMark].map(m =>  <option key={m} value={m}>{m}</option>) : null
                 }
+              </Form.Control>
+            </Form.Group>
+          </Form.Row>
+        </div>
+        <div className="catalog-page-search-simple-field">
+          <Form>
+            <Row>
+              <Col>
+                <Form.Row>
+                  <Form.Group as={Col} controlId="b1">
+                    <Form.Label>Год от</Form.Label>
+                    <Form.Control
+                      // value={selectedMark}
+                      // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { onChangeMark(e.target.value || '') }}
+                      as="select"
+                    >
+                      <option value="any">От</option>
+                      {/* { marks.map(m =>  <option key={m} value={m}>{m}</option>) } */}
+                    </Form.Control>
+                  </Form.Group>
+
+                  <Form.Group as={Col} controlId="n2">
+                    <Form.Label>Год до</Form.Label>
+                    <Form.Control
+                      // value={selectedModel}
+                      // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectModel(e.target.value || '') }}
+                      as="select"
+                    >
+                      <option value="any">До</option>
+                      {/* {
+                        selectedMark !== 'any' ? models[selectedMark].map(m =>  <option key={m} value={m}>{m}</option>) : null
+                      } */}
+                    </Form.Control>
+                  </Form.Group>
+                </Form.Row>
+              </Col>
+              <Col>
+                <Form.Row>
+                  <Form.Group as={Col} controlId="b3">
+                    <Form.Label>Цена от</Form.Label>
+                    <Form.Control
+                      // value={selectedMark}
+                      // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { onChangeMark(e.target.value || '') }}
+                    ></Form.Control>
+                  </Form.Group>
+
+                  <Form.Group as={Col} controlId="b4">
+                    <Form.Label>Цена до</Form.Label>
+                    <Form.Control
+                      // value={selectedModel}
+                      // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectModel(e.target.value || '') }}
+                    ></Form.Control>
+                  </Form.Group>
+                  <Form.Group as={Col} controlId="b7" sm="2">
+                    <Form.Label>Валюта</Form.Label>
+                    <Form.Control
+                      // value={selectedModel}
+                      // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectModel(e.target.value || '') }}
+                      as="select"
+                      defaultValue="usd"
+                    >
+                      <option value="usd">USD</option>
+                      <option value="byn">BYN</option>
+                      {/* {
+                        selectedMark !== 'any' ? models[selectedMark].map(m =>  <option key={m} value={m}>{m}</option>) : null
+                      } */}
+                    </Form.Control>
+                  </Form.Group>
+                </Form.Row>
+              </Col>
+              <Col>
+                <Form.Row>
+                  <Form.Group as={Col} controlId="b5">
+                    <Form.Label>Объем от</Form.Label>
+                    <Form.Control
+                      // value={selectedMark}
+                      // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { onChangeMark(e.target.value || '') }}
+                      as="select"
+                    >
+                      <option value="any">От</option>
+                      {/* { marks.map(m =>  <option key={m} value={m}>{m}</option>) } */}
+                    </Form.Control>
+                  </Form.Group>
+
+                  <Form.Group as={Col} controlId="b6">
+                    <Form.Label>Объем до</Form.Label>
+                    <Form.Control
+                      // value={selectedModel}
+                      // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectModel(e.target.value || '') }}
+                      as="select"
+                    >
+                      <option value="any">До</option>
+                      {/* {
+                        selectedMark !== 'any' ? models[selectedMark].map(m =>  <option key={m} value={m}>{m}</option>) : null
+                      } */}
+                    </Form.Control>
+                  </Form.Group>
+                </Form.Row>
+              </Col>
+            </Row>
+          </Form>
+        </div>
+
+        <div className="catalog-page-search-simple-field">
+          <Form.Row>
+            <Form.Group as={Col} controlId="c1">
+              <Form.Label>Коробка передач</Form.Label>
+              <Form.Control
+                // value={selectedMark}
+                // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { onChangeMark(e.target.value || '') }}
+                as="select"
+              >
+                <option value="any">автомат</option>
+                {/* { marks.map(m =>  <option key={m} value={m}>{m}</option>) } */}
+              </Form.Control>
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="c2">
+              <Form.Label>Кузов</Form.Label>
+              <Form.Control
+                value={selectedBodyType}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectBodyType(e.target.value || '') }}
+                as="select"
+              >
+                <option value="any">Любая</option>
+                { bodyTypes.map((m, i) =>  <option disabled={i > 4} key={m} value={m}>{decodeURI(m)}</option>) }
                 {/* <option>2</option> */}
               </Form.Control>
-            </Col>
-          </Form.Group>
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="c3">
+              <Form.Label>Привод</Form.Label>
+              <Form.Control
+                disabled={selectedMark === 'any'}
+                value={selectedModel}
+                //
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectModel(e.target.value || '') }}
+                as="select"
+              >
+                {/* wheelDrives */}
+                <option value="any">Любой</option>
+                { wheelDrives.map((m, i) =>  <option disabled={i > 4} key={m} value={m}>{m}</option>) }
+              </Form.Control>
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="c4">
+              <Form.Label>Модель</Form.Label>
+              <Form.Control
+                disabled={selectedMark === 'any'}
+                value={selectedModel}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectModel(e.target.value || '') }}
+                as="select"
+              >
+                <option value="any">Все модели</option>
+                {
+                  selectedMark !== 'any' ? models[selectedMark].map(m =>  <option key={m} value={m}>{m}</option>) : null
+                }
+              </Form.Control>
+            </Form.Group>
+          </Form.Row>
         </div>
+
         <div className="catalog-page-search-simple-field">
           <Form.Group as={Row}>
             <Form.Label column sm="2">
@@ -159,12 +315,13 @@ const Catalog: React.FC<Props> = ({ cars, cur }) => {
               {/* defaultValue="email@example.com" */}
               <Form.Control value={selectedBodyType} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectBodyType(e.target.value || '') }} as="select">
                 <option value="any">Любая</option>
-                { bodyTypes.map(m =>  <option key={m} value={m}>{decodeURI(m)}</option>) }
+                { bodyTypes.map((m, i) =>  <option disabled={i > 4} key={m} value={m}>{decodeURI(m)}</option>) }
                 {/* <option>2</option> */}
               </Form.Control>
             </Col>
           </Form.Group>
         </div>
+
         <div className="catalog-page-search-simple-field">
           <Form.Group as={Row}>
             <Form.Label column sm="2">
