@@ -42,6 +42,9 @@ const Catalog: React.FC<Props> = ({ cars, cur }) => {
   let bodyTypes: string[] = [];
   let wheelDrives: string[] = [];
   let petrols: string[] = [];
+  let transmissions: string[] = [];
+  let years: string[] = [];
+  let capacities: string[] = [];
 
   cars.forEach((value, index) => {
     const mark = value.post_title?.split(' ')[0];
@@ -49,6 +52,9 @@ const Catalog: React.FC<Props> = ({ cars, cur }) => {
     const bodyType = value.bodyType;
     const wheelDrive = value.wheelDrive;
     const petrol = value.petrol;
+    const transmission = value.transmission;
+    const year = value.year;
+    const capacity = value.engineCapacity;
 
     if (mark && !marks.find(m => m === mark)) {
       marks.push(mark);
@@ -59,19 +65,20 @@ const Catalog: React.FC<Props> = ({ cars, cur }) => {
       models[mark].push(model);
     }
 
-    if (bodyType && !bodyTypes.find(m => m === bodyType)) {
-      bodyTypes.push(bodyType);
+    const addStructure = (structure: string | undefined, arrStructure: string[]) => {
+      if (structure && !arrStructure.find(m => m === structure)) {
+        arrStructure.push(structure);
+      }
     }
 
-    if (wheelDrive && !wheelDrives.find(m => m === wheelDrive)) {
-      wheelDrives.push(wheelDrive);
-    }
+    addStructure(bodyType, bodyTypes);
+    addStructure(wheelDrive, wheelDrives);
+    addStructure(petrol, petrols);
+    addStructure(transmission, transmissions);
+    addStructure(year, years);
+    addStructure(capacity, capacities);
 
-    if (petrol && !petrols.find(m => m === petrol)) {
-      petrols.push(petrol);
-    }
   })
-
 
   const [selectedMark, selectMark] = useState('any');
   const [selectedModel, selectModel] = useState('any');
@@ -82,6 +89,16 @@ const Catalog: React.FC<Props> = ({ cars, cur }) => {
   const [selectedBodyType, selectBodyType] = useState('any');
   const [selectedWheelDrive, selectWheelDrive] = useState('any');
   const [selectedPetrol, selectPetrol] = useState('any');
+  const [selectedTransmission, selectTransmission] = useState('any');
+  const [selectedMinYear, selectMinYear] = useState('any');
+  const [selectedMaxYear, selectMaxYear] = useState('any');
+
+  const [selectedMinCapacity, selectMinCapacity] = useState('any');
+  const [selectedMaxCapacity, selectMaxCapacity] = useState('any');
+
+  const [selectedMinPrice, selectMinPrice] = useState('');
+  const [selectedMaxPrice, selectMaxPrice] = useState('');
+  const [selectedCurrency, selectCurrency] = useState('usd');
 
   // sort
   if (selectedMark !== 'any') {
@@ -103,6 +120,80 @@ const Catalog: React.FC<Props> = ({ cars, cur }) => {
   if (selectedPetrol !== 'any') {
     sortedCars = sortedCars.filter(c => c.petrol === selectedPetrol);
   }
+
+  if (selectedTransmission !== 'any') {
+    sortedCars = sortedCars.filter(c => c.transmission === selectedTransmission);
+  }
+
+  if (selectedMinPrice !== '' && selectedMinPrice !== null && selectedMinPrice !== undefined) {
+    sortedCars = sortedCars
+      .filter(c => selectedCurrency === 'usd'
+        ? Number(c.price) >= Number(selectedMinPrice)
+        : Number((Number(c.price || 0) * cur).toFixed(2)) >= Number(selectedMinPrice)
+      );
+  }
+
+  if (selectedMaxPrice !== '' && selectedMaxPrice !== null && selectedMaxPrice !== undefined) {
+    sortedCars = sortedCars
+      .filter(c => selectedCurrency === 'usd'
+        ? Number(c.price) <= Number(selectedMaxPrice)
+        : Number((Number(c.price || 0) * cur).toFixed(2)) <= Number(selectedMaxPrice)
+      );
+  }
+
+  // START YEARS
+  years = years.sort();
+  const minYear = years[0];
+  const maxYear = years[years.length - 1];
+  years = [];
+
+  for (let i = 0; i < Number(maxYear); i++) {
+    years[i] = `${Number(minYear) + i}`;
+
+    if (Number(years[i]) === Number(maxYear)) {
+      break;
+    }
+  }
+
+  let minYears = [...years];
+  let maxYears = [...years];
+
+  if (selectedMinYear !== 'any') {
+    sortedCars = sortedCars.filter(c => Number(c.year) >= Number(selectedMinYear));
+    maxYears = maxYears.filter(y => Number(y) >= Number(selectedMinYear));
+  }
+  if (selectedMaxYear !== 'any') {
+    sortedCars = sortedCars.filter(c => Number(c.year) <= Number(selectedMaxYear));
+    minYears = minYears.filter(y => Number(y) <= Number(selectedMaxYear));
+  }
+  // END YEARS
+
+  // START CAPACITY
+  capacities = capacities.sort();
+  const minCapacity = capacities[0];
+  const maxCapacity = capacities[capacities.length - 1];
+  capacities = [];
+
+  for (let i = 0; Number(minCapacity) + (i * 100) < Number(maxCapacity); i++) {
+    capacities[i] = `${Number(minCapacity) + (i * 100)}`;
+
+    if (Number(capacities[i]) === Number(maxCapacity)) {
+      break;
+    }
+  }
+
+  let minCapacitites = [...capacities];
+  let maxCapacitites = [...capacities];
+
+  if (selectedMinCapacity !== 'any') {
+    sortedCars = sortedCars.filter(c => Number(c.engineCapacity) >= Number(selectedMinCapacity));
+    maxCapacitites = maxCapacitites.filter(y => Number(y) >= Number(selectedMinCapacity));
+  }
+  if (selectedMaxCapacity !== 'any') {
+    sortedCars = sortedCars.filter(c => Number(c.engineCapacity) <= Number(selectedMaxCapacity));
+    minCapacitites = minCapacitites.filter(y => Number(y) <= Number(selectedMaxCapacity));
+  }
+  // END CAPACITY
 
   const [firstPayment, setFirstPayment] = useState<number>(0);
   const [period, setPeriod] = useState<number>(0);
@@ -156,26 +247,24 @@ const Catalog: React.FC<Props> = ({ cars, cur }) => {
                   <Form.Group as={Col} controlId="b1">
                     <Form.Label>Год от</Form.Label>
                     <Form.Control
-                      // value={selectedMark}
-                      // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { onChangeMark(e.target.value || '') }}
+                      value={selectedMinYear}
+                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectMinYear(e.target.value || '') }}
                       as="select"
                     >
                       <option value="any">От</option>
-                      {/* { marks.map(m =>  <option key={m} value={m}>{m}</option>) } */}
+                      { minYears.map(m => <option key={m} value={m}>{m}</option>) }
                     </Form.Control>
                   </Form.Group>
 
                   <Form.Group as={Col} controlId="n2">
                     <Form.Label>Год до</Form.Label>
                     <Form.Control
-                      // value={selectedModel}
-                      // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectModel(e.target.value || '') }}
+                      value={selectedMaxYear}
+                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectMaxYear(e.target.value || '') }}
                       as="select"
                     >
                       <option value="any">До</option>
-                      {/* {
-                        selectedMark !== 'any' ? models[selectedMark].map(m =>  <option key={m} value={m}>{m}</option>) : null
-                      } */}
+                      { maxYears.map(m =>  <option key={m} value={m}>{m}</option>) }
                     </Form.Control>
                   </Form.Group>
                 </Form.Row>
@@ -185,31 +274,27 @@ const Catalog: React.FC<Props> = ({ cars, cur }) => {
                   <Form.Group as={Col} controlId="b3">
                     <Form.Label>Цена от</Form.Label>
                     <Form.Control
-                      // value={selectedMark}
-                      // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { onChangeMark(e.target.value || '') }}
+                      value={selectedMinPrice}
+                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectMinPrice(e.target.value || '') }}
                     ></Form.Control>
                   </Form.Group>
 
                   <Form.Group as={Col} controlId="b4">
                     <Form.Label>Цена до</Form.Label>
                     <Form.Control
-                      // value={selectedModel}
-                      // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectModel(e.target.value || '') }}
+                      value={selectedMaxPrice}
+                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectMaxPrice(e.target.value || '') }}
                     ></Form.Control>
                   </Form.Group>
-                  <Form.Group as={Col} controlId="b7" sm="2">
+                  <Form.Group as={Col} style={{minWidth: '90px'}} controlId="b7" sm="2">
                     <Form.Label>Валюта</Form.Label>
                     <Form.Control
-                      // value={selectedModel}
-                      // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectModel(e.target.value || '') }}
+                      value={selectedCurrency}
+                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectCurrency(e.target.value || '') }}
                       as="select"
-                      defaultValue="usd"
                     >
                       <option value="usd">USD</option>
                       <option value="byn">BYN</option>
-                      {/* {
-                        selectedMark !== 'any' ? models[selectedMark].map(m =>  <option key={m} value={m}>{m}</option>) : null
-                      } */}
                     </Form.Control>
                   </Form.Group>
                 </Form.Row>
@@ -219,26 +304,24 @@ const Catalog: React.FC<Props> = ({ cars, cur }) => {
                   <Form.Group as={Col} controlId="b5">
                     <Form.Label>Объем от</Form.Label>
                     <Form.Control
-                      // value={selectedMark}
-                      // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { onChangeMark(e.target.value || '') }}
+                      value={selectedMinCapacity}
+                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectMinCapacity(e.target.value || '') }}
                       as="select"
                     >
                       <option value="any">От</option>
-                      {/* { marks.map(m =>  <option key={m} value={m}>{m}</option>) } */}
+                      { minCapacitites.map(m => <option key={m} value={m}>{m}</option>) }
                     </Form.Control>
                   </Form.Group>
 
                   <Form.Group as={Col} controlId="b6">
                     <Form.Label>Объем до</Form.Label>
                     <Form.Control
-                      // value={selectedModel}
-                      // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectModel(e.target.value || '') }}
+                      value={selectedMaxCapacity}
+                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectMaxCapacity(e.target.value || '') }}
                       as="select"
                     >
                       <option value="any">До</option>
-                      {/* {
-                        selectedMark !== 'any' ? models[selectedMark].map(m =>  <option key={m} value={m}>{m}</option>) : null
-                      } */}
+                      { maxCapacitites.map(m => <option key={m} value={m}>{m}</option>) }
                     </Form.Control>
                   </Form.Group>
                 </Form.Row>
@@ -252,12 +335,12 @@ const Catalog: React.FC<Props> = ({ cars, cur }) => {
             <Form.Group as={Col} controlId="c1">
               <Form.Label>Коробка передач</Form.Label>
               <Form.Control
-                // value={selectedMark}
-                // onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { onChangeMark(e.target.value || '') }}
+                value={selectedTransmission}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectTransmission(e.target.value || '') }}
                 as="select"
               >
-                <option value="any">автомат</option>
-                {/* { marks.map(m =>  <option key={m} value={m}>{m}</option>) } */}
+                <option value="any">Любая</option>
+                { transmissions.map((m, i) =>  <option key={m} value={m}>{decodeURI(m)}</option>) }
               </Form.Control>
             </Form.Group>
 
@@ -269,88 +352,34 @@ const Catalog: React.FC<Props> = ({ cars, cur }) => {
                 as="select"
               >
                 <option value="any">Любая</option>
-                { bodyTypes.map((m, i) =>  <option disabled={i > 4} key={m} value={m}>{decodeURI(m)}</option>) }
-                {/* <option>2</option> */}
+                { bodyTypes.map((m, i) =>  <option key={m} value={m}>{decodeURI(m)}</option>) }
               </Form.Control>
             </Form.Group>
 
             <Form.Group as={Col} controlId="c3">
               <Form.Label>Привод</Form.Label>
               <Form.Control
-                disabled={selectedMark === 'any'}
-                value={selectedModel}
-                //
-                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectModel(e.target.value || '') }}
+                value={selectedWheelDrive}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectWheelDrive(e.target.value || '') }}
                 as="select"
               >
-                {/* wheelDrives */}
                 <option value="any">Любой</option>
-                { wheelDrives.map((m, i) =>  <option disabled={i > 4} key={m} value={m}>{m}</option>) }
+                { wheelDrives.map((m, i) =>  <option key={m} value={m}>{decodeURI(m)}</option>) }
               </Form.Control>
             </Form.Group>
 
             <Form.Group as={Col} controlId="c4">
-              <Form.Label>Модель</Form.Label>
+              <Form.Label>Тип мотора</Form.Label>
               <Form.Control
-                disabled={selectedMark === 'any'}
-                value={selectedModel}
-                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectModel(e.target.value || '') }}
+                value={selectedPetrol}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectPetrol(e.target.value || '') }}
                 as="select"
               >
-                <option value="any">Все модели</option>
-                {
-                  selectedMark !== 'any' ? models[selectedMark].map(m =>  <option key={m} value={m}>{m}</option>) : null
-                }
+                <option value="any">Любой</option>
+                { petrols.map((m, i) =>  <option key={m} value={m}>{decodeURI(m)}</option>) }
               </Form.Control>
             </Form.Group>
           </Form.Row>
-        </div>
-
-        <div className="catalog-page-search-simple-field">
-          <Form.Group as={Row}>
-            <Form.Label column sm="2">
-              Тип кузова
-            </Form.Label>
-            <Col sm="10">
-              {/* defaultValue="email@example.com" */}
-              <Form.Control value={selectedBodyType} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectBodyType(e.target.value || '') }} as="select">
-                <option value="any">Любая</option>
-                { bodyTypes.map((m, i) =>  <option disabled={i > 4} key={m} value={m}>{decodeURI(m)}</option>) }
-                {/* <option>2</option> */}
-              </Form.Control>
-            </Col>
-          </Form.Group>
-        </div>
-
-        <div className="catalog-page-search-simple-field">
-          <Form.Group as={Row}>
-            <Form.Label column sm="2">
-              Привод
-            </Form.Label>
-            <Col sm="10">
-              {/* defaultValue="email@example.com" */}
-              <Form.Control value={selectedWheelDrive} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectWheelDrive(e.target.value || '') }} as="select">
-                <option value="any">Любая</option>
-                { wheelDrives.map(m =>  <option key={m} value={m}>{decodeURI(m)}</option>) }
-                {/* <option>2</option> */}
-              </Form.Control>
-            </Col>
-          </Form.Group>
-        </div>
-        <div className="catalog-page-search-simple-field">
-          <Form.Group as={Row}>
-            <Form.Label column sm="2">
-              Тип мотора
-            </Form.Label>
-            <Col sm="10">
-              {/* defaultValue="email@example.com" */}
-              <Form.Control value={selectedPetrol} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { selectPetrol(e.target.value || '') }} as="select">
-                <option value="any">Любая</option>
-                { petrols.map(m =>  <option key={m} value={m}>{decodeURI(m)}</option>) }
-                {/* <option>2</option> */}
-              </Form.Control>
-            </Col>
-          </Form.Group>
         </div>
       </div>
       {/* <div className="catalog-page-search-sort">

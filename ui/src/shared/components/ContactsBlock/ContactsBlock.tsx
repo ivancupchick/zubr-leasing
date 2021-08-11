@@ -38,7 +38,7 @@ class ContactsBlock extends React.Component  {
         <div className="content-contacts">
           <ul>
             <li>220055, г. Минск, ул. Каменногорская, д. 45, оф. 101</li>
-            <li>+375 (33) 651-12-12</li>
+            <li><a href="tel:37544703-74-86">+375 (44) 703-74-86</a></li>
             <li>info@zubr-leasing.by</li>
           </ul>
         </div>
