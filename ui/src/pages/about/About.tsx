@@ -5,6 +5,8 @@ import { Footer } from "../footer/Footer"
 import gosreg from '../../shared/docs/gosreg.pdf'
 import ustav from '../../shared/docs/ustav.pdf'
 import inLeasingComps from '../../shared/docs/inLeasingComps.pdf'
+import yearResults2021 from '../../shared/docs/yearResults2021.pdf'
+import prim2021 from '../../shared/docs/prim2021.pdf'
 
 import './About.scss'
 
@@ -16,9 +18,9 @@ const About: React.FC = () => {
         <p>
           ООО “ЗУБР ЛИЗИНГ”
           <br/>
-          Юридический адрес: 220055, г. Минск, ул. Каменногорская, д. 45, оф. 101
+          Юридический адрес: 220080, г. Минск, ул. МКАД, д. 303, пом. 02П-Ж
           <br/>
-          Адрес офиса: 220055, г. Минск, ул. Каменногорская, д. 45, оф. 101
+          Адрес офиса: 220080, г. Минск, ул. МКАД, д. 303, пом. 02П-Ж
           <br/>
           УНП 193498948
           <br/>
@@ -59,6 +61,13 @@ const About: React.FC = () => {
           <br/>
           <br/>
           <a href={inLeasingComps} target = "_blank" rel="noreferrer">Свидетельство о включении в реестр лизинговых организаций</a>
+          <br/>
+          <h3>Отчетность:</h3>
+          <br/>
+          <a href={yearResults2021} target = "_blank" rel="noreferrer">Годовая финансовая отчетность 2021</a>
+          <br/>
+          <br/>
+          <a href={prim2021} target = "_blank" rel="noreferrer">Примечание 2021</a>
         </div>
       </div>
     </div>
