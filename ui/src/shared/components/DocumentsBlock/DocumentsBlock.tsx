@@ -19,7 +19,7 @@ const DocumentsBlock = (props: DocumentsBlockProps) => {
       </div>
       <div className="docs-message">
         <p>
-          Для оформления автомобиля в лизинг от вас потребуется ряд
+          Для оформления автомобиля в финансовый лизинг от вас потребуется ряд
           документов.
           <br />
           <br />

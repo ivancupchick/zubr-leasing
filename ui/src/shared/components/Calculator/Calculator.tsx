@@ -64,7 +64,7 @@ const Calculator: React.FC<LeasingDescriptionProps> = (props: LeasingDescription
 
 
   return <div className="calculateSection-container">
-    <h2>Рассчитать лизинг</h2>
+    <h2>Рассчитать финансовый лизинг</h2>
     <div className="calculateSection-container-slides">
       <div className="calculateSection-container-slides-price">
         <div className="calculateSection-container-slides-price-field">

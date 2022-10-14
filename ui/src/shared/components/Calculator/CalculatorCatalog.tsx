@@ -78,7 +78,7 @@ const CalculatorCatalog: React.FC<LeasingDescriptionProps> = (props: LeasingDesc
         <div className="calculateSection-container-slides-price-field">
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-price">Срок лизинга</InputGroup.Text>
+              <InputGroup.Text id="inputGroup-sizing-price">Срок финансового лизинга</InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
               aria-label="price"

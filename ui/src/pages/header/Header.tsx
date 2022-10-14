@@ -60,10 +60,10 @@ const HeaderComponent = () => {
         <div className="header-holder-rs">
           <a
             className={"logo-wrap-logo"}
-            title="Лизинговые услуги в Минске, купить авто в лизинг в Беларуси (РБ)"
+            title="Лизинговые услуги в Минске, купить авто в финансовый лизинг в Беларуси (РБ)"
             href="/"
           >
-            Лизинговые услуги в Минске, купить авто в лизинг в Беларуси (РБ)
+            Лизинговые услуги в Минске, купить авто в финансовый лизинг в Беларуси (РБ)
           </a>
           <div className="header-holder-rs-contacts">
             <div className="header-holder-rs-contacts-controls">

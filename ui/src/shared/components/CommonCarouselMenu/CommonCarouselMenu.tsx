@@ -30,7 +30,7 @@ type CarouselItems = {
 const carouselItems: CarouselItems = [{
   slideUrl: firstSlideImage,
   texts: {
-    title: 'ЛИЗИНГ АВТО ДЛЯ ФИЗИЧЕСКИХ ЛИЦ',
+    title: 'ФИНАНСОВЫЙ ЛИЗИНГ АВТО ДЛЯ ФИЗИЧЕСКИХ ЛИЦ',
     subTitle: 'УДОБНЫЕ ГРАФИКИ ПЛАТЕЖЕЙ',
     exprasionTextForButton: 'individual',
     buttonText: 'Подробнее'
@@ -38,7 +38,7 @@ const carouselItems: CarouselItems = [{
 }, {
   slideUrl: secondSlideImage,
   texts: {
-    title: 'ЛИЗИНГ АВТО ДЛЯ ЮРИДИЧЕСКИХ ЛИЦ',
+    title: 'ФИНАНСОВЫЙ ЛИЗИНГ АВТО ДЛЯ ЮРИДИЧЕСКИХ ЛИЦ',
     subTitle: 'НОВЫХ И Б/У АВТОМОБИЛЕЙ',
     exprasionTextForButton: 'legal',
     buttonText: 'Подробнее'
@@ -46,7 +46,7 @@ const carouselItems: CarouselItems = [{
 }, {
   slideUrl: thirdSlideImage,
   texts: {
-    title: 'ЛИЗИНГ НОВЫХ АВТОМОБИЛЕЙ',
+    title: 'ФИНАНСОВЫЙ ЛИЗИНГ НОВЫХ АВТОМОБИЛЕЙ',
     subTitle: 'ВЫГОДНЫЕ ФИНАНСОВЫЕ ПРОГРАММЫ',
     exprasionTextForButton: 'sendMail',
     buttonText: 'Подробнее'

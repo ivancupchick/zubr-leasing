@@ -56,7 +56,7 @@ const Main: React.FC<Props> = ({ cars, cur }) => {
     <section className="screen secondScreen">
       <div className="auto left-auto">
         <div className="background"></div>
-        <h3 className="animate__slideInDown">ЛИЗИНГ АВТОМОБИЛЕЙ ДЛЯ ФИЗИЧЕСКИХ ЛИЦ</h3>
+        <h3 className="animate__slideInDown">ФИНАНСОВЫЙ ЛИЗИНГ АВТОМОБИЛЕЙ ДЛЯ ФИЗИЧЕСКИХ ЛИЦ</h3>
         <ul>
           <li>Новые и б/у автомобили до 10 лет</li>
           <li>Быстрое одобрение</li>
@@ -68,13 +68,13 @@ const Main: React.FC<Props> = ({ cars, cur }) => {
       </div>
       <div className="auto right-auto">
         <div className="background"></div>
-        <h3>ЛИЗИНГ АВТОМОБИЛЕЙ ДЛЯ ЮРИДИЧЕСКИХ ЛИЦ</h3>
+        <h3>ФИНАНСОВЫЙ ЛИЗИНГ АВТОМОБИЛЕЙ ДЛЯ ЮРИДИЧЕСКИХ ЛИЦ</h3>
         <ul>
           <li>Новые и б/у автомобили до 10 лет</li>
           <li>Быстрое рассмотрение документов</li>
           <li>Удобные графики погашения</li>
           <li>Несколько вариантов программ</li>
-          <li>Специальные условия лизинга</li>
+          <li>Специальные условия финансового лизинга</li>
         </ul>
       </div>
     </section>
